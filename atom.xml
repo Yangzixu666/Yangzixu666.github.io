@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-28T03:02:20.095Z</updated>
+  <updated>2018-06-13T09:45:06.591Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个简单的天气爬虫</title>
+    <link href="http://yoursite.com/2018/06/13/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84%E5%A4%A9%E6%B0%94%E7%88%AC%E8%99%AB/"/>
+    <id>http://yoursite.com/2018/06/13/一个简单的天气爬虫/</id>
+    <published>2018-06-13T09:40:44.000Z</published>
+    <updated>2018-06-13T09:45:06.591Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>一个简单的天气爬虫，可以根据你的输入得到不同城市的天气。快来测试一下吧</p></blockquote><a id="more"></a><blockquote><p>输入：你要查询的城市的名称的拼音（最好是区级以上的地方，不然查不到，哈哈）</p><p>输出：一周的天气详细情况</p></blockquote><blockquote><p>test data1:</p></blockquote><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">input:shijiazhuang</span><br><span class="line">output:</span><br><span class="line">石家庄天气预报一周</span><br><span class="line">今天是:<span class="number">2018</span>年<span class="number">06</span>月<span class="number">13</span>日　星期三　戊戌年四月三十 </span><br><span class="line"><span class="number">06</span>月<span class="number">13</span>日 今天 良 晴 <span class="number">20</span>℃ ~ <span class="number">31</span>℃ 北风 <span class="number">2</span>级</span><br><span class="line"><span class="number">06</span>月<span class="number">14</span>日 明天 良 晴 <span class="number">23</span>℃ ~ <span class="number">34</span>℃ 东南风 <span class="number">2</span>级</span><br><span class="line"><span class="number">06</span>月<span class="number">15</span>日 后天 良 多云 <span class="number">25</span>℃ ~ <span class="number">36</span>℃ 南风 <span class="number">3</span>级</span><br><span class="line"><span class="number">06</span>月<span class="number">16</span>日 星期六 良 阴 <span class="number">23</span>℃ ~ <span class="number">32</span>℃ 南风 <span class="number">3</span>级</span><br><span class="line"><span class="number">06</span>月<span class="number">17</span>日 星期日 良 多云 <span class="number">21</span>℃ ~ <span class="number">30</span>℃ 南风 <span class="number">2</span>级</span><br><span class="line"><span class="number">06</span>月<span class="number">18</span>日 星期一 轻度污染 阴 <span class="number">19</span>℃ ~ <span class="number">28</span>℃ 西风 <span class="number">2</span>级</span><br><span class="line"><span class="number">06</span>月<span class="number">19</span>日 星期二 轻度污染 多云 <span class="number">19</span>℃ ~ <span class="number">32</span>℃ 南风 <span class="number">2</span>级</span><br></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Created on Fri Jun  8 17:33:10 2018</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@author: 57815</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">import</span> urllib.request</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">url=<span class="string">"https://www.tianqi.com/"</span></span><br><span class="line">city=input(<span class="string">"请输入您要查询城市名称的拼音"</span>)</span><br><span class="line">url=url+city+<span class="string">"/7/"</span></span><br><span class="line"><span class="comment">#print(url)</span></span><br><span class="line">response=urllib.request.urlopen(url)</span><br><span class="line">soup=BeautifulSoup(response, <span class="string">'html.parser'</span>, from_encoding=<span class="string">'utf-8'</span>)</span><br><span class="line">Class=soup.find_all(<span class="string">'div'</span>,&#123;<span class="string">'class'</span>,<span class="string">'weatherbox2'</span>&#125;)</span><br><span class="line">week=soup.find_all(<span class="string">'dd'</span>,&#123;<span class="string">'class'</span>,<span class="string">'week'</span>&#125;)</span><br><span class="line">temp=soup.find_all(<span class="string">'dd'</span>,&#123;<span class="string">'class'</span>,<span class="string">'temp'</span>&#125;)</span><br><span class="line">txt=soup.find_all(<span class="string">'dd'</span>,&#123;<span class="string">'class'</span>,<span class="string">'txt'</span>&#125;)</span><br><span class="line">date=soup.find_all(<span class="string">'dl'</span>,attrs=&#123;<span class="string">'class'</span>:re.compile(<span class="string">"table_day7"</span>)&#125;)</span><br><span class="line">air=soup.find_all(<span class="string">'dd'</span>,&#123;<span class="string">'class'</span>,<span class="string">'air'</span>&#125;)</span><br><span class="line">title1=soup.find(<span class="string">'div'</span>,&#123;<span class="string">'class'</span>,<span class="string">'tit_img01'</span>&#125;).h1.get_text()</span><br><span class="line">title2=soup.find(<span class="string">'div'</span>,&#123;<span class="string">'class'</span>,<span class="string">'tit_img01'</span>&#125;).span.get_text()</span><br><span class="line">L=[]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> date:</span><br><span class="line">    L.append(i.dl.get_text())</span><br><span class="line">print(title1)</span><br><span class="line">print(<span class="string">"今天是:"</span>+title2)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">7</span>):</span><br><span class="line">    j=i*<span class="number">2</span></span><br><span class="line">    print(L[i],week[i].get_text(),air[i].get_text(),temp[i].get_text(),txt[j].get_text(),txt[j+<span class="number">1</span>].get_text())</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;一个简单的天气爬虫，可以根据你的输入得到不同城市的天气。快来测试一下吧&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="-&quot;爬虫&quot;" scheme="http://yoursite.com/categories/%E7%88%AC%E8%99%AB/"/>
+    
+    
+      <category term="-python" scheme="http://yoursite.com/tags/python/"/>
+    
+  </entry>
   
   <entry>
     <title>OS_ch04</title>
