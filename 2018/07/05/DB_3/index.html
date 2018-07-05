@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<html class="theme-next mist use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-DB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Yang_1998's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="关系数据库标准语言SQL">
+<meta name="keywords" content="-DB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DB_3">
+<meta property="og:url" content="http://yoursite.com/2018/07/05/DB_3/index.html">
+<meta property="og:site_name" content="Yang_1998&#39;s Blog">
+<meta property="og:description" content="关系数据库标准语言SQL">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="c:/Users/57815/AppData/Local/Temp/1530190393149.png">
+<meta property="og:updated_time" content="2018-07-05T13:46:53.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DB_3">
+<meta name="twitter:description" content="关系数据库标准语言SQL">
+<meta name="twitter:image" content="c:/Users/57815/AppData/Local/Temp/1530190393149.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/05/DB_3/"/>
+
+
+
+
+
+  <title>DB_3 | Yang_1998's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+    	<a href="https://github.com/yangzixu666"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yang_1998's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/DB_3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yangzixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yang_1998's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DB_3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T20:21:44+08:00">
+                2018-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">-"学习笔记"</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="关系数据库标准语言SQL"><a href="#关系数据库标准语言SQL" class="headerlink" title="关系数据库标准语言SQL"></a>关系数据库标准语言SQL</h3><a id="more"></a>
+<p>SQL：是一个通用的、 功能极强的关系数据库语言。同时也是一种介于关系代数 与关系演算之间的<strong>结构化查询</strong>语言    </p>
+<p><strong>数据定义</strong>、<strong>数据查询</strong>、<strong>数据操纵</strong>和<strong>数据控制</strong></p>
+<p>SQL已经成为关系数据库的<strong>查询标准</strong>    </p>
+<p>数据定义：模式定义、表定义、视图和 索引的定义    </p>
+<p>创建数据库：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">database</span> student <span class="comment">--创建数据库</span></span><br><span class="line"><span class="keyword">use</span> student <span class="comment">--使用数据库</span></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">database</span> student <span class="comment">--删除数据库 （不能删除当前数据库）</span></span><br></pre></td></tr></table></figure>
+<p>模式（schema）</p>
+<ul>
+<li>模式是一个<strong>独立于数据库用户的非重复命名空间</strong>，在这个这个空间中可以定义该模式包含的数据库对象。例如：基本表，视图，索引等</li>
+<li>一个数据库可以有多个模式，模式 隶属于数据库    </li>
+</ul>
+<p>模式的定义：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">schema</span> <span class="keyword">Test</span> authorization zhang</span><br><span class="line">	<span class="keyword">create</span> <span class="keyword">table</span> student(</span><br><span class="line">    	sno <span class="built_in">char</span>(<span class="number">9</span>) primary <span class="keyword">key</span>,</span><br><span class="line">        sname <span class="built_in">char</span>(<span class="number">20</span>),</span><br><span class="line">        sage <span class="built_in">int</span></span><br><span class="line">    );</span><br></pre></td></tr></table></figure>
+<p>删除模式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">schema</span> <span class="keyword">test</span> <span class="keyword">cascade</span>(级联) |RESTRICT</span><br><span class="line"><span class="keyword">cascade</span><span class="comment">--删除模式的同时把该模式中所有的数据库对象全部删除</span></span><br><span class="line">restrict(限制)</span><br><span class="line"><span class="comment">--如果该模式中定义了下属的数据库对象（如表、视图等），则</span></span><br><span class="line"><span class="comment">--拒绝该删除语句的执行</span></span><br><span class="line"><span class="comment">--当该模式中没有任何下属的对象时才能执行</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> student</span><br><span class="line">(</span><br><span class="line">    sno <span class="built_in">char</span>(<span class="number">9</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    sname <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">unique</span>,</span><br><span class="line">    sex <span class="built_in">char</span>(<span class="number">2</span>),</span><br><span class="line">    sage <span class="built_in">smallint</span>,</span><br><span class="line">    sdept <span class="built_in">char</span>(<span class="number">20</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> course</span><br><span class="line">(</span><br><span class="line">    cno <span class="built_in">char</span>(<span class="number">4</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    cname <span class="built_in">char</span>(<span class="number">40</span>),</span><br><span class="line">    cpno <span class="built_in">char</span>(<span class="number">4</span>),</span><br><span class="line">    credit <span class="built_in">smallint</span>,</span><br><span class="line">    foreign <span class="keyword">key</span>(cpno)   <span class="keyword">references</span> course(cno)</span><br><span class="line">    <span class="comment">--primary key(cno)</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">主码约束：primary key</span><br><span class="line">唯一约束：unique</span><br><span class="line">非空值约束：not null</span><br><span class="line">参照完整性约束：foreign key</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--向Student表增加“入学时间”列，其数据类型为日期型。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student </span><br><span class="line"><span class="keyword">add</span> entrance <span class="built_in">date</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--将年龄的数据类型由字符型（假设原来的数据类型是字符型）改为整数。</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> student</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">column</span> sage <span class="built_in">int</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--增加课程名称必须取唯一值的约束条件。</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> course</span><br><span class="line"><span class="keyword">add</span> <span class="keyword">unique</span>(cname)</span><br></pre></td></tr></table></figure>
+<p>删除基本表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> student restrict|<span class="keyword">cascade</span></span><br><span class="line">restrict:删除表是有限制的</span><br><span class="line"><span class="comment">--欲删除的基本表不能被其他表的约束所引用</span></span><br><span class="line"><span class="comment">--如果存在依赖该表的对象，则此表不能被删除</span></span><br><span class="line"><span class="keyword">cascade</span>：删除该表没有限制</span><br><span class="line"><span class="comment">--在删除基本表的同时，相关的依赖对象一起删除</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> Student <span class="keyword">CASCADE</span>;</span><br><span class="line">如果选择CASCADE时可以删除表，视图也自动被删除</span><br></pre></td></tr></table></figure>
+<p>建立索引是加快查询速度的有效手段    </p>
+<p>有些DBMS自动建立以下列上的索引 </p>
+<ul>
+<li>PRIMARY KEY </li>
+<li>UNIQUE<ul>
+<li>对于已含重复值的属性列不能建UNIQUE索引 </li>
+<li>对某个列建立UNIQUE索引后， 插入新记录时DBMS会 自动检查新记录在该列上是否取了重复值。 这相当于 增加了一个UNIQUE约束    </li>
+</ul>
+</li>
+</ul>
+<p>建立索引</p>
+<blockquote>
+<p>为学生-课程数据库中的Student， Course， SC三 个表建立索引。其中Student表按学号升序建唯一索引， Course表按课程号升序建唯一索引， SC表按学号升序 和课程号降序建唯一索引。    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> <span class="keyword">index</span> Stuindex <span class="keyword">on</span> student(sno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> <span class="keyword">index</span> Couindex <span class="keyword">on</span> Course(cno);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">unique</span> <span class="keyword">index</span> SCindex <span class="keyword">on</span> SC(sno <span class="keyword">ASC</span>,CNO <span class="keyword">DESC</span>);</span><br><span class="line">ASC <span class="comment">--升序(默认)</span></span><br><span class="line">DESC<span class="comment">-- 降序</span></span><br></pre></td></tr></table></figure>
+<p>聚簇索引：建立聚簇索引后， 基表中数据也需要按指定的聚簇属性值 的升序或降序存放。 也即聚簇索引的索引项顺序与表中记 录的物理顺序一致    </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> clustered <span class="keyword">index</span> stuname <span class="keyword">on</span> student(sname)</span><br><span class="line"><span class="comment">--在一个基本表上最多只能建立一个聚簇索引</span></span><br><span class="line"><span class="comment">--聚簇索引的用途：对于某些类型的查询，可以提高查询效率</span></span><br></pre></td></tr></table></figure>
+<p>删除索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> <span class="keyword">name</span></span><br><span class="line"><span class="comment">--删除索引时，系统会从数据字典中删去有关该索引的描述</span></span><br></pre></td></tr></table></figure>
+<p>删除student表的studentname索引</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">index</span> student.studname</span><br></pre></td></tr></table></figure>
+<p>数据查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--投影 </span></span><br><span class="line"><span class="comment">--例如：查询全体学生的学号、姓名、所在系。</span></span><br><span class="line"><span class="keyword">select</span> sno,sname,sdept</span><br><span class="line"><span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="comment">--查询全体学生的详细记录</span></span><br><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="comment">--查询全体学生的姓名、出生年份</span></span><br><span class="line"><span class="keyword">select</span> sname,<span class="number">2016</span>-sage <span class="string">'Birthday'</span>(别名)</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="comment">--查询全体学生的人数。</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(sname) <span class="string">'学生人数'</span></span><br><span class="line"><span class="keyword">from</span> student;</span><br><span class="line"><span class="comment">--在每个学生的姓名后面显示字符串2007</span></span><br><span class="line"><span class="keyword">select</span> sname,<span class="string">'2007'</span></span><br><span class="line"><span class="keyword">from</span> student</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--选择</span></span><br><span class="line"><span class="comment">--在SELECT子句中使用DISTINCT短语</span></span><br><span class="line"><span class="comment">--例如：查询选修了课程的学生的学号</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> sno</span><br><span class="line"><span class="keyword">from</span> sc</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\57815\AppData\Local\Temp\1530190393149.png" alt="1530190393149"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!= 、&lt;&gt;不等于</span><br><span class="line">IS NULL,IS NOT NULL 是否空值</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询年龄在20~23岁（包括20岁和23岁）之间的学生的姓名、系别和年龄。</span></span><br><span class="line"><span class="keyword">SELECT</span> Sname， Sdept， Sage</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sage <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">AND</span> <span class="number">23</span>；</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询信息系（IS）、数学系（MA）和计算机科学系(CS）学生的姓名和性别。</span></span><br><span class="line"><span class="keyword">SELECT</span> Sname， Ssex</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sdept <span class="keyword">IN</span> ( <span class="string">'IS'</span>， <span class="string">'MA'</span>， <span class="string">'CS'</span> );</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--字符串匹配</span></span><br><span class="line"><span class="comment">-- % (百分号) 代表任意长度（长度可以为0）的字符串</span></span><br><span class="line"><span class="comment">-- _ (下横线) 代表任意单个字符</span></span><br><span class="line"><span class="comment">-- 当用户要查询的字符串本身就含有 % 或 _ 时，要使用</span></span><br><span class="line"><span class="comment">-- ESCAPE '&lt;换码字符&gt;' 短语对通配符进行转义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--查询所有姓刘学生的姓名、学号和性别</span></span><br><span class="line"><span class="keyword">select</span> sname,sno,ssex</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sname <span class="keyword">like</span> <span class="string">'刘%'</span>;</span><br><span class="line"><span class="comment">--查询姓"欧阳"且全名为三个汉字的学生的姓名</span></span><br><span class="line"><span class="keyword">select</span> sname </span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sname <span class="keyword">like</span> <span class="string">'欧阳_'</span></span><br><span class="line"><span class="comment">--查询DB_Design课程的课程号和学分。</span></span><br><span class="line"><span class="keyword">select</span> cno,ccredit</span><br><span class="line"><span class="keyword">from</span> course</span><br><span class="line"><span class="keyword">where</span> cname <span class="keyword">like</span><span class="string">'DB\_Design'</span> escape<span class="string">'\';</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">--查询以“DB_” 开头，且倒数第3个字符为 i的课程的详细情况。。</span></span><br><span class="line"><span class="string">select *</span></span><br><span class="line"><span class="string">from course</span></span><br><span class="line"><span class="string">where cname like '</span>DB\_%i_ _<span class="string">' escape '</span>\<span class="string">';</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--涉及空值的查询</span></span><br><span class="line">is null 或 is not null 不能用 =null代替</span><br><span class="line"><span class="comment">--某些学生选修课程后没有参加考试，所以有选课记录，但没有考试成绩。查询缺少成绩的学生的学号和相应的课程号</span></span><br><span class="line"><span class="keyword">select</span> sno，cno</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">where</span> grade <span class="keyword">is</span> <span class="literal">null</span>；</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--多重条件查询</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--查询计算机系年龄在20岁以下的学生姓名。</span></span><br><span class="line"><span class="keyword">select</span> sname</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sdept=<span class="string">'CS'</span> <span class="keyword">and</span> sage&lt;<span class="number">20</span>;</span><br></pre></td></tr></table></figure>
+<p>order by 子句</p>
+<ul>
+<li>可以按一个或多个属性列排序</li>
+<li>升序：ASC(默认)</li>
+<li>降序：DESC</li>
+</ul>
+<p>当排序列含空值时 </p>
+<ul>
+<li>ASC：排序列为空值的元组最后显示 </li>
+<li>DESC：排序列为空值的元组最先显示    </li>
+</ul>
+<p>当按多个属性排序时 </p>
+<ul>
+<li>首先根据第一个属性排序，如果在该属性上有多个相 同的值时，则按第二个属性排序，以此类推    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询选修了3号课程的学生的学号及其成绩，查询结果按分数降序排列。</span></span><br><span class="line"><span class="keyword">select</span> cno,grade</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">where</span> cno=<span class="string">'3'</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> grade <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--查询全体学生情况，查询结果按所在系的系号升序排列，同一系中的学生按年龄降序排列。</span></span><br><span class="line"><span class="keyword">SELECT</span> * </span><br><span class="line"><span class="keyword">FROM</span> student</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sdept,sage <span class="keyword">desc</span>；</span><br></pre></td></tr></table></figure>
+<p>使用聚集函数</p>
+<ul>
+<li>count 计数</li>
+<li>sum 计算总和</li>
+<li>avg 计算平均值</li>
+<li>MAX求最大值</li>
+<li>MIN求最小值</li>
+<li>DISTINCT短语：在计算时要取消指定列中的重复值 </li>
+<li>ALL短语：缺省值，不取消重复值    </li>
+</ul>
+<p>对查询结果分组</p>
+<ul>
+<li>使用GROUP BY子句分组    </li>
+<li>未对查询结果分组，聚集函数将作用于整个查询结果 </li>
+<li>对查询结果分组后，聚集函数将分别作用于每个组    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--  求各个课程号及相应的选课人数</span></span><br><span class="line"><span class="keyword">select</span> cno <span class="string">'课程号'</span>，<span class="keyword">count</span>(sno) <span class="string">'人数'</span></span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> cno</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 使用GROUP BY子句后， SELECT子句的列名列表中，只能出现分组属性和集函数</span></span><br><span class="line"><span class="comment">-- 可以使用HAVING短语筛选最终输出结果</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--查询选修了3门以上课程的学生学号。</span></span><br><span class="line"><span class="keyword">select</span> sno</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> sno</span><br><span class="line"><span class="keyword">having</span> <span class="keyword">count</span>(*)&gt;<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>连接查询</p>
+<ul>
+<li>同时涉及多个表的查询称为连接查询    </li>
+<li>用来连接两个表的条件称为连接条件或连接谓词，    </li>
+<li>若连接运算符为 = 时，称为等值连接    </li>
+<li>使用其他运算符时，称为非等值连接    </li>
+<li>在等值连接中，去掉目标列中的重复属性则为自然连接    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> student.*,sc.*</span><br><span class="line"><span class="keyword">from</span> student,sc</span><br><span class="line"><span class="keyword">where</span> student.sno=sc.sno</span><br></pre></td></tr></table></figure>
+<p>自身连接：一个表与其自己进行连接，称为表的自身连接    </p>
+<ul>
+<li>需要给表起别名以示区别    </li>
+<li>由于所有属性名都是同名属性，因此必须使用别名前缀    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询每一门课的间接先修课（即先修课的先修课）</span></span><br><span class="line"><span class="keyword">select</span> first.cno,second.cpno</span><br><span class="line"><span class="keyword">from</span> course <span class="keyword">first</span>, course <span class="keyword">second</span></span><br><span class="line"><span class="keyword">where</span> first.cpno=second.cno</span><br></pre></td></tr></table></figure>
+<p>外连接(Outer join)</p>
+<p>外连接与普通连接的区别    </p>
+<ul>
+<li>普通连接操作只输出满足连接条件的元组    </li>
+<li>外连接操作以指定表为连接主体，将主体表中不满足 连接条件的元组一并输出    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--全外连接</span></span><br><span class="line"><span class="keyword">select</span> first.cno,second.cpno</span><br><span class="line"><span class="keyword">from</span> course <span class="keyword">first</span> <span class="keyword">full</span> <span class="keyword">outer</span> <span class="keyword">join</span> course <span class="keyword">second</span></span><br><span class="line"><span class="keyword">on</span> first.cpno=<span class="keyword">second</span>,cno <span class="comment">--细节在这里，join，where 改成 on</span></span><br><span class="line"><span class="comment">--左外连接</span></span><br><span class="line"><span class="keyword">select</span> first.cno,second.cpno</span><br><span class="line"><span class="keyword">from</span> course <span class="keyword">first</span> <span class="keyword">left</span> <span class="keyword">outer</span> <span class="keyword">join</span> course <span class="keyword">second</span></span><br><span class="line"><span class="keyword">on</span> first.cpno=<span class="keyword">second</span>,cno</span><br><span class="line"><span class="comment">--右外连接</span></span><br><span class="line"><span class="keyword">select</span> first.cno,second.cpno</span><br><span class="line"><span class="keyword">from</span> course <span class="keyword">first</span> <span class="keyword">right</span> <span class="keyword">outer</span> <span class="keyword">join</span> course <span class="keyword">second</span></span><br><span class="line"><span class="keyword">on</span> first.cpno=<span class="keyword">second</span>,cno.</span><br></pre></td></tr></table></figure>
+<p>复合条件连接</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询选修2号课程且成绩在90分以上的所有学生的学号、姓名。</span></span><br><span class="line"><span class="keyword">select</span> sno,sname</span><br><span class="line"><span class="keyword">from</span> student,sc</span><br><span class="line"><span class="keyword">where</span> student.cno=sc.sno <span class="keyword">and</span> sc.cno=<span class="string">'2'</span><span class="keyword">and</span> sc.grade&gt;<span class="number">90</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">--查询每个学生的学号、姓名、选修的课程名及成绩。</span></span><br><span class="line"><span class="keyword">SELECT</span> Student.Sno， Sname， Cname， Grade</span><br><span class="line"><span class="keyword">FROM</span> Student， SC， Course <span class="comment">/*多表连接*/</span></span><br><span class="line"><span class="keyword">WHERE</span> Student.Sno = SC.Sno</span><br><span class="line"><span class="keyword">and</span> SC.Cno = Course.Cno；</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询与“刘晨”在同一个系学习的学生。查询要求可以分步来完成</span></span><br><span class="line"><span class="keyword">SELECT</span> Sno， Sname， Sdept</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sdept <span class="keyword">IN</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span> Sdept</span><br><span class="line">	<span class="keyword">FROM</span> Student</span><br><span class="line">	<span class="keyword">WHERE</span> Sname= ‘ 刘晨 ’ </span><br><span class="line">)；<span class="comment">--不相关子查询</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询选修了课程名为“信息系统”的学生学号和姓名。</span></span><br><span class="line"><span class="keyword">select</span> sno,sname</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sno <span class="keyword">in</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> sno</span><br><span class="line">    <span class="keyword">from</span> sc</span><br><span class="line">    <span class="keyword">where</span> cno <span class="keyword">in</span></span><br><span class="line">    (</span><br><span class="line">        <span class="keyword">select</span> cno</span><br><span class="line">        <span class="keyword">from</span> course</span><br><span class="line">        <span class="keyword">where</span> cname=<span class="string">'信息系统'</span></span><br><span class="line">    )</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询其他系中比信息系任意一个(其中某一个)学生年龄小的学生姓名和年龄。</span></span><br><span class="line"><span class="keyword">select</span> sname sage</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sage&lt;<span class="keyword">any</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> sage</span><br><span class="line">    <span class="keyword">from</span> student</span><br><span class="line">    <span class="keyword">where</span> sdept=<span class="string">'IS'</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">and</span> sdept != <span class="string">'IS'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询其他系中比计算机科学系所有学生年龄小的学生姓名和年龄。</span></span><br><span class="line"><span class="keyword">SELECT</span> Sname， Sage</span><br><span class="line"><span class="keyword">FROM</span> Student</span><br><span class="line"><span class="keyword">WHERE</span> Sage &lt; ALL</span><br><span class="line">(</span><br><span class="line">    <span class="keyword">SELECT</span> Sage</span><br><span class="line">	<span class="keyword">FROM</span> Student</span><br><span class="line">	<span class="keyword">WHERE</span> Sdept= <span class="string">' CS '</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">AND</span> Sdept &lt;&gt; <span class="string">' CS '</span> :</span><br></pre></td></tr></table></figure>
+<p>带有exists谓词查询的子查询</p>
+<ul>
+<li>带有EXISTS谓词的子查询不返回任何数据，只产生逻 辑真值“true”或逻辑假值“false”    <ul>
+<li>若内层查询结果非空，则外层的WHERE子句返回真值    </li>
+<li>若内层查询结果为空，则外层的WHERE子句返回假值    </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询所有选修了1号课程的学生姓名。</span></span><br><span class="line"><span class="keyword">select</span> sname</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">exists</span></span><br><span class="line">(	</span><br><span class="line">    <span class="keyword">select</span> *</span><br><span class="line">    <span class="keyword">from</span> sc</span><br><span class="line">    <span class="keyword">where</span> cno=<span class="string">'1'</span><span class="keyword">and</span> sno=student.sno</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询没有所有选修了1号课程的学生姓名。</span></span><br><span class="line"><span class="keyword">select</span> sname</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> *</span><br><span class="line">    <span class="keyword">from</span> sc</span><br><span class="line">    <span class="keyword">where</span> sno=studnet.sno <span class="keyword">and</span> cno=<span class="string">'1'</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--查询选修了全部课程的学生姓名。</span></span><br><span class="line"><span class="keyword">select</span> sname</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span></span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">	<span class="keyword">form</span> course</span><br><span class="line">	<span class="keyword">where</span> <span class="keyword">not</span> <span class="keyword">exists</span></span><br><span class="line">	(</span><br><span class="line">        <span class="keyword">select</span> *</span><br><span class="line">        <span class="keyword">from</span> sc</span><br><span class="line">        <span class="keyword">where</span> sno=student.sno</span><br><span class="line">        <span class="keyword">and</span> cno=course.cno</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>ORDER BY子句只能用于对最终查询结果排序， 不能对中 间结果排序 </p>
+</li>
+<li><p>任何情况下， ORDER BY子句只能出现在最后    </p>
+</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sdept=<span class="string">'CS'</span></span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sage&lt;=<span class="number">19</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> sno;</span><br></pre></td></tr></table></figure>
+<p>数据更新</p>
+<p>数据的插入</p>
+<ul>
+<li>插入元组</li>
+<li>插入子查询结果</li>
+</ul>
+<p>into </p>
+<ul>
+<li>指定要插入数据的表名及属性列    </li>
+<li>属性列的顺序可与表定义中的顺序不一致    </li>
+<li>没有指定属性列：表示要插入的是一条完整的元组，且 属性列属性与表定义中的顺序一致    </li>
+<li>指定部分属性列：插入的元组在其余属性列上取空值    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> Student (Sno, Sname, Ssex, Sdept, Sage)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="string">'201215128'</span>， <span class="string">'陈冬'</span>， <span class="string">'男'</span>， <span class="string">'IS'</span>， <span class="number">18</span>)；</span><br></pre></td></tr></table></figure>
+<p>插入子查询结果    </p>
+<ul>
+<li>子查询的结果必须包含和insert的字段列表一样多的字段， 并且数据类型兼容    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--对每一个系，求学生的平均年龄，并把结果存入数据库。</span></span><br><span class="line">craete table deptage</span><br><span class="line">(</span><br><span class="line">    sdept char(15),</span><br><span class="line">    avgage smallint</span><br><span class="line">)</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> deptage(sdept,avgage)</span><br><span class="line"><span class="keyword">select</span> sdept,<span class="keyword">avg</span>(sage)</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> sdept;</span><br></pre></td></tr></table></figure>
+<p>数据修改</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--将学生201215121的年龄改为22岁</span></span><br><span class="line"><span class="keyword">update</span> student</span><br><span class="line"><span class="keyword">set</span> sage=<span class="number">22</span></span><br><span class="line"><span class="keyword">where</span> sno=<span class="string">'201215121'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--将所有学生的年龄增加1岁</span></span><br><span class="line"><span class="keyword">UPDATE</span> Student</span><br><span class="line"><span class="keyword">SET</span> Sage= Sage+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>删除操作</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--删除学号为201215128的学生记录</span></span><br><span class="line"><span class="keyword">delete</span></span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sno=<span class="string">'201215128'</span>;</span><br></pre></td></tr></table></figure>
+<p>视图：</p>
+<ul>
+<li>虚表，是从一个或几个基本表（或视图）导出的表 </li>
+<li>只存放视图的定义，不会出现数据冗余 </li>
+<li>基表中的数据发生变化，从视图中查询出的数据也随之改变    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> is_student</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> sno,sname,sage</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sdept=<span class="string">'IS'</span></span><br><span class="line"><span class="keyword">with</span> <span class="keyword">check</span> <span class="keyword">option</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--定义基于该视图的新视图</span></span><br><span class="line"><span class="comment">--建立信息系选修了1号课程的学生视图。</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> IS_S1(Sno， Sname， Grade)</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> Student.Sno， Sname， Grade</span><br><span class="line"><span class="keyword">FROM</span> Student， SC</span><br><span class="line"><span class="keyword">WHERE</span> Student.Sno=SC.Sno <span class="keyword">AND</span></span><br><span class="line">Sdept= <span class="string">'IS'</span> <span class="keyword">AND</span></span><br><span class="line">SC.Cno= <span class="string">'1'</span>；</span><br><span class="line"><span class="comment">--建立信息系选修了1号课程且成绩在90分以上的学生视图。</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> IS_S2</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span> Sno， Sname， Grade</span><br><span class="line"><span class="keyword">FROM</span> IS_S1</span><br><span class="line"><span class="keyword">WHERE</span> Grade&gt;=<span class="number">90</span>；</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--将学生的学号及他的平均成绩定义为一个视图。</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> view_G(sno,Gavg)</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> sno,<span class="keyword">avg</span>(grade)</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> sno;</span><br></pre></td></tr></table></figure>
+<p>删除视图</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">view</span> &lt;视图名&gt; [<span class="keyword">cascade</span>]</span><br></pre></td></tr></table></figure>
+<p>查询视图：</p>
+<ul>
+<li>从用户角度：查询视图与查询基本表相同    </li>
+<li>DBMS实现视图查询的方法    <ul>
+<li><strong>实体化视图</strong><ul>
+<li>有效性检查：检查所查询的视图是否存在    </li>
+<li>执行视图定义，将视图临时实体化，生成临时表    </li>
+<li>查询视图转换为查询临时表    </li>
+<li>查询完毕删除被实体化的视图(临时表)   </li>
+</ul>
+</li>
+<li><strong>视图消解法</strong><ul>
+<li>进行有效性检查，检查查询的表、视图等是否存在。 如果存在，则从数据字典中取出视图的定义    </li>
+<li>把视图定义中的子查询与用户的查询结合起来，转 换成等价的对基本表的查询    </li>
+<li>执行修正后的查询    </li>
+</ul>
+</li>
+</ul>
+</li>
+<li>一些视图是不可更新的，因为对这些视图的更新 不能唯一地有意义地转换成对相应基本表的更新 (对两类方法均如此)    </li>
+</ul>
+<p>视图的作用</p>
+<ul>
+<li>视图能够简化用户的操作    </li>
+<li>视图使用户能以多种角度看待同一数据    </li>
+<li>视图对重构数据库提供了一定程度的<strong>逻辑独立性</strong>    </li>
+<li>视图能够对机密数据提供安全保护    </li>
+<li>适当的利用视图可以更清晰的表达查询    </li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DB/" rel="tag"><i class="fa fa-tag"></i> -DB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/05/DB_5/" rel="next" title="DB_5">
+                <i class="fa fa-chevron-left"></i> DB_5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/05/DB_4/" rel="prev" title="DB_4">
+                DB_4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yangzixu</p>
+              <p class="site-description motion-element" itemprop="description">小渣渣de blog</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangzixu666" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关系数据库标准语言SQL"><span class="nav-number">1.</span> <span class="nav-text">关系数据库标准语言SQL</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yangzixu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共32.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

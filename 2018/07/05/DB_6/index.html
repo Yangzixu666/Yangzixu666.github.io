@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<html class="theme-next mist use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-DB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Yang_1998's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="第六章 关系数据库理论">
+<meta name="keywords" content="-DB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DB_6">
+<meta property="og:url" content="http://yoursite.com/2018/07/05/DB_6/index.html">
+<meta property="og:site_name" content="Yang_1998&#39;s Blog">
+<meta property="og:description" content="第六章 关系数据库理论">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:image" content="c:/Users/57815/AppData/Local/Temp/1530346090890.png">
+<meta property="og:image" content="c:/Users/57815/AppData/Local/Temp/1530539782236.png">
+<meta property="og:image" content="c:/Users/57815/AppData/Local/Temp/1530594818512.png">
+<meta property="og:updated_time" content="2018-07-05T13:50:18.327Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DB_6">
+<meta name="twitter:description" content="第六章 关系数据库理论">
+<meta name="twitter:image" content="c:/Users/57815/AppData/Local/Temp/1530346090890.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/05/DB_6/"/>
+
+
+
+
+
+  <title>DB_6 | Yang_1998's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+    	<a href="https://github.com/yangzixu666"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yang_1998's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/DB_6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yangzixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yang_1998's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DB_6</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T20:21:44+08:00">
+                2018-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">-"学习笔记"</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="第六章-关系数据库理论"><a href="#第六章-关系数据库理论" class="headerlink" title="第六章 关系数据库理论"></a>第六章 关系数据库理论</h2><a id="more"></a>
+<h4 id="什么是数据依赖"><a href="#什么是数据依赖" class="headerlink" title="什么是数据依赖"></a>什么是数据依赖</h4><h5 id="完整性约束的表现形式"><a href="#完整性约束的表现形式" class="headerlink" title="完整性约束的表现形式"></a>完整性约束的表现形式</h5><ul>
+<li>限定属性取值范围：例如成绩必须在0-100之间</li>
+<li>定义属性值间的相互关联</li>
+</ul>
+<h5 id="数据依赖"><a href="#数据依赖" class="headerlink" title="数据依赖"></a>数据依赖</h5><ul>
+<li>一个关系内部属性与属性之间的约束关系</li>
+<li>现实世界属性间相互联系的抽象</li>
+<li>数据内在的性质</li>
+<li>语义的体现</li>
+</ul>
+<h5 id="数据依赖的类型"><a href="#数据依赖的类型" class="headerlink" title="数据依赖的类型"></a>数据依赖的类型</h5><ul>
+<li>函数依赖（FD）</li>
+<li>多值依赖（MVD)</li>
+<li>其他</li>
+</ul>
+<h4 id="关系模式的简化表示"><a href="#关系模式的简化表示" class="headerlink" title="关系模式的简化表示"></a>关系模式的简化表示</h4><p>R（U,D,DOM,F）</p>
+<p>R：关系名</p>
+<p>D：属性的域</p>
+<p>DOM：属性的映射关系</p>
+<p>F：依赖关系</p>
+<p>简化为一个三元组：</p>
+<p>R（U,F）</p>
+<p>当且仅当U上的一个关系r满足F时， r称为关系模 式 R（U, F）的一个关系    </p>
+<blockquote>
+<p> 例子：</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">STUDENT(U,D,dom,F)</span><br><span class="line"></span><br><span class="line">U&#123;sno,name,age&#125;　　//理解为表的属性集合</span><br><span class="line"></span><br><span class="line">D&#123;char,int&#125;　　// 理解为表中字段的类型集合</span><br><span class="line"></span><br><span class="line">dom&#123;dom(sno)=dom(name)=char,dom(age)=int&#125;　　// 理解为每个字段具体的取值</span><br><span class="line"></span><br><span class="line">F&#123;sno-&gt;name,sno-&gt;age&#125;　　// 理解为表字段的关系</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>学生的学号（Sno）、所在系（Sdept） 系主任姓名（Mname）、课程号（Cno） 成绩（Grade） </p>
+<p>单一的关系模式 ： Student &lt;U、 F&gt; </p>
+<p>U ＝｛Sno, Sdept, Mname, Cno, Grade ｝    </p>
+</blockquote>
+<p>数据库的语义：</p>
+<ul>
+<li>一个系有若干学生，一个学生只属于一个系；</li>
+<li>一个系只有一名主任；</li>
+<li>一个学生可以选修多门课程，每门课程有若干学生选修</li>
+<li>每个学生所学的每门课程都有一个成绩</li>
+</ul>
+<p>属性组U上的一组函数依赖</p>
+<p>F ＝｛Sno → Sdept, Sdept → Mname, (Sno, Cno) → Grade ｝    </p>
+<p><img src="C:\Users\57815\AppData\Local\Temp\1530346090890.png" alt="1530346090890"></p>
+<h4 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h4><p>设<strong>R(U)是一个属性集U上的关系模式， X和Y是U的子集</strong> 若对于R(U)的任意一个可能的关系r， r中不可能存在两个元组 在X上的属性值相等， 而在Y上的属性值不等， 则称 <strong>“X函 数确定Y” 或 “Y函数依赖于X”</strong> ， 记作<strong>X→Y</strong>。 X称为这个函数依赖的<strong>决定属性集</strong>(Determinant)。 Y=f(x)    </p>
+<ul>
+<li>函数依赖不是指关系模式R的某个或某些关系实例满足的约 束条件，而是指R的所有关系实例均要满足的约束条件</li>
+<li>​    函数依赖是语义范畴的概念。只能根据数据的语义来确定函 数依赖。    </li>
+</ul>
+<h4 id="函数依赖可以从不同角度分为："><a href="#函数依赖可以从不同角度分为：" class="headerlink" title="函数依赖可以从不同角度分为："></a>函数依赖可以从不同角度分为：</h4><ul>
+<li>平凡函数依赖与非平凡函数依赖</li>
+<li>完全函数依赖与部分函数依赖</li>
+<li>传递函数依赖</li>
+</ul>
+<p>–在关系模式R（U）中，对于U的子集X和Y</p>
+<p>如果X→Y，但Y不是X的真子集，则称X→ Y是非平凡函数依赖</p>
+<p>如果X→Y，但是Y是X的真子集，则称X→ Y是非平凡函数依赖</p>
+<blockquote>
+<p>例如</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">非平凡函数依赖： (Sno, Cno) → Grade</span><br><span class="line">平凡函数依赖： </span><br><span class="line">(Sno, Cno) → Sno</span><br><span class="line">(Sno, Cno) → Cno</span><br></pre></td></tr></table></figure>
+<p>–<strong>部分函数依赖</strong>：如果X在关系模式R(U)中，如果X→Y，并且对于X的任 何一个真子集X ′ ，都有X′ → Y, 则称Y部分函数依赖于X  ，记作X<img src="C:\Users\57815\AppData\Local\Temp\1530539782236.png" alt="1530539782236">  Y     </p>
+<p>–<strong>完全函数依赖</strong>：设X,Y是关系R的两个属性集合，X’是X的真子集，存在X→Y，但对每一个X’都有X’!→Y，则称Y完全函数依赖于X。</p>
+<p>–<strong>传递函数依赖</strong>：设X,Y,Z是关系R中互不相同的属性集合，存在X→Y(Y !→X),Y→Z，则称Z传递函数依赖于X。</p>
+<h3 id="码"><a href="#码" class="headerlink" title="码"></a>码</h3><blockquote>
+<p>Q：码，主码，候选码的区别  </p>
+<p>A：码是数据系统中的基本概念。所谓码就是能唯一标识实体的属性，是整个实体集的性质，而不是单个实体的性质。它包括超码，候选吗，主码。  </p>
+<p><strong>超码是一个或多个属性的集合，这些属性可以让我们在一个实体集中唯一地标识一个实体。</strong></p>
+<p>如果K是一个超码，那么K的任意超集也是超码，也就是如果K是超码，那么所有包含K的集合也是超码。  所以候选码是最小超码，它们的任意真子集都不能成为超码。  如果K是超码，那么所有包含K的集合都不能是候选码。  </p>
+<p><strong>从多个候选码中任意选一个作为主码，如果候选码只有一个，那么候选码就是主码。</strong>  </p>
+<p>先说候选码，候选码就是可以区别一个元组（即表中的一行数据）的属性或属性的集合，比如学生表student(id,name,age,sex,deptno),其中的id是可以唯一标识一个元组的，所以id是可以作为候选码的，既然id都可以做候选码了，那么id和name这两个属性的组合可不可以唯一区别一个元组呢？显然是可以的。此时的id可以成为码，id和name的组合也可以成为码，但是id和name的组合不能称之为候选码&lt;（超码），因为即使去掉name属性，剩下的id属性也完全可以唯一标识一个元组，就是说，<strong>候选码中的所有属性都是必须的，缺少了任何一个属性，就不能唯一标识一个元组了</strong>，给候选码下一个精确的定义就是：<strong>可以唯一标识一个元组的最少的属性集合。</strong>而码是没有最少属性这个要求的。另外，一个表的候选码可能有多个，从这些个候选码中选择一个做为主码，至于选择哪一个候选码，这个是无所谓的，只要是从候选码中选的就行。  至于主属性，刚才提到了，一个表可以有多个候选码，那么对于某个属性来说，如果这个属性存在于所有的候选码中，它就称之为主属性 </p>
+<p><strong>关系模式 R 中属性或属性组X 并非 R的码，但 X 是另一个关系模式的码，则称 X 是R 的外部码 （Foreign key） 也称外码</strong>  如在SC（Sno， Cno， Grade）中， Sno不是码，但Sno是 关系模式S（Sno， Sdept， Sage）的码，则Sno是关系模 式SC的外部码 </p>
+<p>主码与外码一起提供了表示关系间联系的手段    </p>
+</blockquote>
+<h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><p>1 、第一范式（1NF）  在任何一个关系数据库中，第一范式（1NF）是对关系模式的基本要求，不满足第一范式（1NF）的数据库就不是关系数据库。  满足第一范式的关系模式并不一定是一个好的关系 模式。    </p>
+<p>所谓第一范式（1NF）是指数据库表的每一列(即每个属性)都是不可分割的基本数据项，同一列中不能有多个值，即实体中的某个属性不能有多个值或者不能有重复的属性。<strong>简而言之，第一范式就是无重复的列。</strong> </p>
+<p> 2、 第二范式（2NF）  第二范式（2NF）是在第一范式（1NF）的基础上建立起来的，即满足第二范式（2NF）必须先满足第一范式（1NF）。</p>
+<p>第二范式（2NF）要求数据库表中的每个实例或行必须可以被唯一地区分。为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。员工信息表中加上了员工编号（emp_id）列，因为每个员工的员工编号是唯一的，因此每个员工可以被唯一区分。这个唯一属性列被称为主关键字或主键、主码。  </p>
+<p>第二范式（2NF）<strong>要求实体的属性完全依赖于主关键字。所谓完全依赖是指不能存在仅依赖主关键字一部分的属性，如果存在，那么这个属性和主关键字的这一部分应该分离出来形成一个新的实体，新实体与原实体之间是一对多的关系。</strong>为实现区分通常需要为表加上一个列，以存储各个实例的唯一标识。<strong>简而言之，第二范式就是非主属性依赖于主关键字。</strong></p>
+<p>  3 、第三范式（3NF）  满足第三范式（3NF）必须先满足第二范式（2NF）。在满足第二范式的基础上，切不存在传递函数依赖，那么就是第三范式。简而言之，<strong>第三范式就是属性不依赖于其它非主属性。</strong> </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1NF-2NF</span><br><span class="line">消除非主属性对主码的部分依赖</span><br><span class="line">拆表</span><br><span class="line">2NF-3NF</span><br><span class="line">消除非主属性对主码的传递依赖</span><br><span class="line">拆表</span><br><span class="line">采用投影分解法，把Sgrade分解为两个关 系模式，以</span><br><span class="line">消除传递函数依赖</span><br><span class="line">SG（Sno， Cno, Grade）</span><br><span class="line">GR（Grade， Result）</span><br></pre></td></tr></table></figure>
+<p>Armstrong公理系统，关系模式R&lt;U,F&gt;有以下推理规则</p>
+<ul>
+<li>自反律</li>
+<li>增广律</li>
+<li>传递律</li>
+</ul>
+<p>Armstrong公理系统的推理规则    </p>
+<ul>
+<li>合并规则</li>
+<li>伪传递规则</li>
+<li>分解规则</li>
+</ul>
+<p><img src="C:\Users\57815\AppData\Local\Temp\1530594818512.png" alt="1530594818512"></p>
+<p>闭包：在关系模式R&lt;U, F&gt;中为F所逻辑蕴含(或推导)的函数依赖 的全体叫做F的闭包，记为F+    </p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DB/" rel="tag"><i class="fa fa-tag"></i> -DB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/05/DB_7/" rel="next" title="DB_7">
+                <i class="fa fa-chevron-left"></i> DB_7
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/05/DB_5/" rel="prev" title="DB_5">
+                DB_5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yangzixu</p>
+              <p class="site-description motion-element" itemprop="description">小渣渣de blog</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangzixu666" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-关系数据库理论"><span class="nav-number">1.</span> <span class="nav-text">第六章 关系数据库理论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是数据依赖"><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是数据依赖</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#完整性约束的表现形式"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">完整性约束的表现形式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据依赖"><span class="nav-number">1.0.1.2.</span> <span class="nav-text">数据依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据依赖的类型"><span class="nav-number">1.0.1.3.</span> <span class="nav-text">数据依赖的类型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系模式的简化表示"><span class="nav-number">1.0.2.</span> <span class="nav-text">关系模式的简化表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数依赖"><span class="nav-number">1.0.3.</span> <span class="nav-text">函数依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数依赖可以从不同角度分为："><span class="nav-number">1.0.4.</span> <span class="nav-text">函数依赖可以从不同角度分为：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#码"><span class="nav-number">1.1.</span> <span class="nav-text">码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#范式"><span class="nav-number">1.2.</span> <span class="nav-text">范式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yangzixu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共32.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

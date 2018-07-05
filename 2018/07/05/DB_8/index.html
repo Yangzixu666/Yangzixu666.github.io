@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+
+<script type="text/javascript"
+color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+<html class="theme-next mist use-motion" lang="zh-cn">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="-DB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Yang_1998's Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="第八章数据库编程">
+<meta name="keywords" content="-DB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DB_8">
+<meta property="og:url" content="http://yoursite.com/2018/07/05/DB_8/index.html">
+<meta property="og:site_name" content="Yang_1998&#39;s Blog">
+<meta property="og:description" content="第八章数据库编程">
+<meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-07-05T13:51:04.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DB_8">
+<meta name="twitter:description" content="第八章数据库编程">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/05/DB_8/"/>
+
+
+
+
+
+  <title>DB_8 | Yang_1998's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-cn">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband">
+    	<a href="https://github.com/yangzixu666"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+    </div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yang_1998's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/DB_8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yangzixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yang_1998's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">DB_8</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T20:21:44+08:00">
+                2018-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">-"学习笔记"</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="第八章数据库编程"><a href="#第八章数据库编程" class="headerlink" title="第八章数据库编程"></a>第八章数据库编程</h3><a id="more"></a>
+<h4 id="一-T-SQL编程基础"><a href="#一-T-SQL编程基础" class="headerlink" title="一:T-SQL编程基础"></a>一:T-SQL编程基础</h4><blockquote>
+<p>标识符</p>
+</blockquote>
+<p>标识符分类：</p>
+<ul>
+<li>常规标识符</li>
+<li>界定标识符</li>
+</ul>
+<p>标识符格式规则</p>
+<ul>
+<li>字母或_、@、# 开头的字母数字</li>
+<li>不与保留字相同</li>
+<li>长度小于128</li>
+<li>不符合规则的标识符必须加以界定（双引号或方括号）</li>
+</ul>
+<blockquote>
+<p>注释语句</p>
+</blockquote>
+<ul>
+<li>单行注释–</li>
+<li>多行注释/<em> … </em>/</li>
+</ul>
+<blockquote>
+<p>表达式</p>
+</blockquote>
+<ul>
+<li>数据类型：整数数据、字符数据、货币数据、日期和时间数据、二进制字符串等</li>
+<li>变量：<ul>
+<li>局部变量<ul>
+<li>局部变量是用户定义，必须以@开头，在程序内声明，并只能在该程序内使用</li>
+<li>局部变量的声明：declare @name int</li>
+<li>局部变量的赋值：set|select @name = &lt;表达式&gt;</li>
+</ul>
+</li>
+<li>全局变量<ul>
+<li>全局变量是SQL Server系统内部使用的变量，以@@开头</li>
+<li>全局变量不是由用户的程序定义的，它们是在服务器级定义的</li>
+<li>用户只能使用预先定义的全局变量</li>
+<li>@@version 目前SQL-Server版本信息</li>
+<li>@@servername 目前SQL-Server服务器名称</li>
+<li>@@servicename 目前所用服务器为</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>SET与SELECT的区别</p>
+</blockquote>
+<ul>
+<li>SET赋值语句一般用户赋给变量指定的额数据变量</li>
+<li>SELECT赋值语句一般用于表中查询数据，然后查询的记录多于要，将把最后一条记录的值赋给变量</li>
+<li>SET一次只能赋值一个变量</li>
+<li>SELECT可以一次赋值多个变量<ul>
+<li>SELECT @a=1,@b=2</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>创建一个@myvar 变量，然后将一个字符串值放在 变量中，最后输出 @myvar 变量的值    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> @myvar <span class="built_in">char</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">select</span> @myvar =<span class="string">'This is a test'</span></span><br><span class="line"><span class="keyword">select</span> @myvar(输出)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>用SET语句和SELECT语句为局部变量赋值    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> @var1 datetime,@var2 <span class="built_in">char</span>(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">set</span> @var1=<span class="keyword">getdate</span>()</span><br><span class="line"><span class="keyword">select</span> @var2=<span class="keyword">convert</span>(<span class="built_in">char</span>(<span class="number">10</span>),@var1,<span class="number">102</span>)</span><br><span class="line"><span class="keyword">select</span> @var2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>选择结构</p>
+<p>查找有没有学号为201215120的学生，有的话 显示学生信息，没有显式没找到    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if exists(<span class="keyword">select</span> *<span class="keyword">from</span> student <span class="keyword">where</span> sno=<span class="string">'201215120'</span>)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">	<span class="keyword">from</span> student</span><br><span class="line">	<span class="keyword">where</span> sno=<span class="string">'201215120'</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	print <span class="string">'没找到'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CASE语句</p>
+<p>:从学生表STUDENT中，选取SNO,SSEX，如 果SSEX为‘男’则输出‘M’，如果为‘女’， 则输出‘F’    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sno,ssex=</span><br><span class="line">	<span class="keyword">case</span> ssex</span><br><span class="line">		<span class="keyword">when</span> <span class="string">'男'</span> <span class="keyword">then</span> <span class="string">'M'</span></span><br><span class="line">		<span class="keyword">when</span> <span class="string">'女'</span> <span class="keyword">then</span> <span class="string">'F'</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">from</span> student</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>从SC表中查询所有同学选课成绩情况，凡成 绩为空者输出‘未考’、小于60输出‘不及格’ 、 小于70输出‘及格’ 、小于90输出‘良好’ 、大 于等于90输出‘优秀    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> sno,cno,grade=</span><br><span class="line">	<span class="keyword">case</span></span><br><span class="line">		<span class="keyword">when</span> grade <span class="keyword">is</span> <span class="literal">null</span> <span class="keyword">then</span> <span class="string">'未考'</span></span><br><span class="line">		<span class="keyword">when</span> grade&lt;<span class="number">60</span> <span class="keyword">then</span> <span class="string">'不及格'</span></span><br><span class="line">		<span class="keyword">when</span> grade&gt;=<span class="number">60</span> <span class="keyword">and</span> grade&lt;<span class="number">70</span> <span class="keyword">then</span> <span class="string">'及格'</span></span><br><span class="line">		<span class="keyword">when</span> grade&gt;=<span class="number">70</span> <span class="keyword">and</span> grade&lt;<span class="number">90</span> <span class="keyword">then</span> <span class="string">'良好'</span></span><br><span class="line">		<span class="keyword">when</span> grade&gt;<span class="number">90</span> <span class="keyword">then</span> <span class="string">'优秀'</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">from</span> sc</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>循环结构</p>
+<p>求1 ~10的和    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> @X <span class="built_in">int</span> ,@ <span class="keyword">sum</span> <span class="built_in">int</span> </span><br><span class="line"><span class="keyword">set</span> @X=<span class="number">0</span></span><br><span class="line"><span class="keyword">set</span> @<span class="keyword">sum</span>=<span class="number">0</span></span><br><span class="line"><span class="keyword">while</span> @X&lt;<span class="number">10</span></span><br><span class="line">	<span class="keyword">begin</span></span><br><span class="line">		<span class="keyword">set</span> @X=@X+<span class="number">1</span></span><br><span class="line">		<span class="keyword">set</span> @<span class="keyword">sum</span>=@<span class="keyword">sum</span>+@X</span><br><span class="line">		print <span class="string">'sum='</span>+<span class="keyword">convert</span>(<span class="built_in">char</span>(<span class="number">2</span>),@<span class="keyword">sum</span>)</span><br><span class="line">	<span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>等待语句</p>
+<p>等待语句挂起一个程序中语句的执行，直到指定的某一时间点到来或在一定的时间间断之后才继续执行。</p>
+</blockquote>
+<blockquote>
+<p>example 1：设置等待一个小时后执行查询</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">	waitfor delay <span class="string">'1:00:00'</span></span><br><span class="line">	<span class="keyword">select</span> * </span><br><span class="line">	<span class="keyword">from</span> s</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>example 2:设置到十点整执行查询</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span></span><br><span class="line">	waitfor <span class="keyword">time</span> <span class="string">'10:00:00'</span></span><br><span class="line">	<span class="keyword">select</span> *</span><br><span class="line">	<span class="keyword">from</span> s</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>日期和时间函数</p>
+<p>例1 使用日期时间函数计算自己现在的年龄    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="string">'年龄'</span>=</span><br><span class="line">	<span class="keyword">datediff</span>(YY,<span class="string">'1998-12-06'</span>,<span class="keyword">getdate</span>())</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例2 返回指定日期中的年/月/日的整数</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select year(&apos;2018-05-30&apos;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>字符串函数和数据类型转换函数</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> @<span class="keyword">str</span> <span class="built_in">char</span>(<span class="number">20</span>)</span><br><span class="line"><span class="keyword">set</span> @<span class="keyword">str</span> = <span class="string">'           yangzixu          '</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">UPPER</span>(@<span class="keyword">str</span>)<span class="string">'变大写'</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">LTRIM</span>(@<span class="keyword">str</span>)<span class="string">'去头部空格'</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">RTRIM</span>(@<span class="keyword">str</span>)<span class="string">'去尾部空格'</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">LEFT</span>(@<span class="keyword">str</span>,<span class="number">15</span>)<span class="string">'从左边起，取15个字符'</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">SUBSTRING</span>(@<span class="keyword">str</span>,<span class="number">10</span>,<span class="number">5</span>)<span class="string">'从下标10开始取5个字符'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> SNO+SNAME+<span class="keyword">CAST</span>(SAGE <span class="keyword">AS</span> <span class="built_in">CHAR</span>(<span class="number">5</span>)) <span class="comment">--强制类型转换  10--&gt;'10'</span></span><br><span class="line"><span class="keyword">FROM</span> STUDENT</span><br></pre></td></tr></table></figure>
+<h3 id="二：游标"><a href="#二：游标" class="headerlink" title="二：游标"></a>二：游标</h3><h5 id="定义：游标是一种能从包括多条数据记录的结果集中每次提取一条记录的机制"><a href="#定义：游标是一种能从包括多条数据记录的结果集中每次提取一条记录的机制" class="headerlink" title="定义：游标是一种能从包括多条数据记录的结果集中每次提取一条记录的机制"></a>定义：游标是一种能从包括多条数据记录的结果集中每次提取一条记录的机制</h5><p>游标的使用：</p>
+<ul>
+<li>声明游标</li>
+<li>打开游标</li>
+<li>读取游标中的数据</li>
+<li>关闭游标</li>
+<li>释放游标</li>
+</ul>
+<blockquote>
+<p>1.声明一个游标，统计没有选修课程的学生的 人数    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> num_cursor <span class="keyword">cursor</span> <span class="comment">--定义游标</span></span><br><span class="line"><span class="keyword">for</span> </span><br><span class="line">	<span class="keyword">select</span> sno</span><br><span class="line">	<span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">read</span> <span class="keyword">only</span> <span class="comment">--默认是只读可以不写</span></span><br><span class="line"><span class="keyword">open</span> num_cursor <span class="comment">--打开游标</span></span><br><span class="line"><span class="keyword">declare</span> @sno <span class="built_in">varchar</span>(<span class="number">10</span>),@<span class="keyword">num</span> <span class="built_in">int</span></span><br><span class="line"><span class="keyword">set</span> @<span class="keyword">num</span>=<span class="number">0</span></span><br><span class="line"><span class="keyword">fetch</span> <span class="keyword">next</span> <span class="keyword">from</span> num_cursor <span class="comment">--取信息</span></span><br><span class="line"><span class="keyword">into</span> @sno</span><br><span class="line"><span class="keyword">while</span> @@fetch_starus=<span class="number">0</span> <span class="comment">-- 0:语句执行成功  -1：语句执行失败  -2：提取数据不存在 </span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span>(<span class="keyword">select</span> * <span class="keyword">from</span> sc <span class="keyword">where</span> sno=@sno)</span><br><span class="line">		<span class="keyword">set</span> @<span class="keyword">num</span>=@<span class="keyword">num</span>+<span class="number">1</span></span><br><span class="line">	<span class="keyword">fetch</span> <span class="keyword">next</span> <span class="keyword">from</span> num_cursor</span><br><span class="line">	<span class="keyword">into</span> @sno</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">select</span> @<span class="keyword">num</span></span><br><span class="line"><span class="keyword">close</span> num_cursor <span class="comment">--关闭游标</span></span><br><span class="line"><span class="keyword">deallocate</span> num_cursor <span class="comment">--释放游标</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.根据学生成绩计算统计各个等级的人数： </p>
+<p>  [90-100]为A, [80-89]为B [70-79]为C, [60-69]为D [0-59]为E     </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 定义局部变量</span></span><br><span class="line"><span class="keyword">DECLARE</span> @mygrade <span class="built_in">int</span></span><br><span class="line"><span class="keyword">DECLARE</span> @E <span class="built_in">int</span>,@D <span class="built_in">int</span>,@C <span class="built_in">int</span>,@B <span class="built_in">int</span>,@A <span class="built_in">int</span></span><br><span class="line"><span class="keyword">select</span> @E = <span class="number">0</span>,@D = <span class="number">0</span>,@C = <span class="number">0</span>,@B = <span class="number">0</span>,@A = <span class="number">0</span></span><br><span class="line"><span class="comment">-- 定义游标.</span></span><br><span class="line"><span class="keyword">DECLARE</span> level_cursor <span class="keyword">CURSOR</span> <span class="keyword">FOR</span></span><br><span class="line"><span class="keyword">SELECT</span> grade</span><br><span class="line"><span class="keyword">FROM</span> sc</span><br><span class="line"><span class="comment">-- 打开游标.</span></span><br><span class="line"><span class="keyword">OPEN</span> level_cursor</span><br><span class="line"><span class="comment">--取游标中第一行放到对应变量中</span></span><br><span class="line"><span class="keyword">fetch</span> <span class="keyword">next</span> <span class="keyword">from</span> level_cursor</span><br><span class="line"><span class="keyword">into</span> @mygrade</span><br><span class="line"><span class="keyword">while</span> @@fetch_status=<span class="number">0</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">if</span> @mygrade <span class="keyword">is</span> <span class="literal">null</span></span><br><span class="line">		<span class="keyword">set</span> @E=@E+<span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> @mygrade&lt;<span class="number">60</span></span><br><span class="line">		<span class="keyword">set</span> @E=@E+<span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> @mygrade&lt;<span class="number">70</span></span><br><span class="line">		<span class="keyword">set</span> @D=@D+<span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> @mygrade&lt;<span class="number">80</span></span><br><span class="line">		<span class="keyword">set</span> @C=@C+<span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> @mygrade&lt;<span class="number">90</span></span><br><span class="line">		<span class="keyword">set</span> @B=@B+<span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">set</span> @A=@A+<span class="number">1</span></span><br><span class="line">	<span class="keyword">fetch</span> <span class="keyword">next</span> <span class="keyword">from</span> level_cursor</span><br><span class="line">	<span class="keyword">into</span> @mygrade</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">close</span> level_cursor</span><br><span class="line"><span class="keyword">deallocate</span> level_cursor</span><br><span class="line"><span class="keyword">select</span> @E <span class="string">'E'</span>,@D <span class="string">'D'</span>,@C <span class="string">'C'</span>,@B <span class="string">'B'</span>,@A <span class="string">'A'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建存储过程</p>
+<p>例1：从SC表中查询不及格课程超过3门的学    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> myproc</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">select</span> *</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> sno <span class="keyword">in</span></span><br><span class="line">(</span><br><span class="line">    <span class="keyword">select</span> sno</span><br><span class="line">    <span class="keyword">from</span> sc</span><br><span class="line">    <span class="keyword">where</span> grade&lt;<span class="number">60</span></span><br><span class="line">    <span class="keyword">group</span> <span class="keyword">by</span> sno</span><br><span class="line">    <span class="keyword">having</span> <span class="keyword">count</span>(*)&gt;<span class="number">3</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例2：将指定记录插入student表    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc proc_insert_student </span><br><span class="line">@sno vaechar(<span class="number">10</span>),</span><br><span class="line">@sname <span class="built_in">varchar</span>(<span class="number">20</span>),</span><br><span class="line">@ssex <span class="built_in">varchar</span>(<span class="number">2</span>)=<span class="string">"男"</span>,<span class="comment">--给定默认参数</span></span><br><span class="line">@sage samllint，</span><br><span class="line">@sdept <span class="built_in">varchar</span>(<span class="number">50</span>)</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">insert</span> <span class="keyword">into</span> student(sno,sname,ssex,sage,sdept)</span><br><span class="line">	<span class="keyword">values</span>(@sno,@sname,@ssex,@sage,@sdept)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例3 查询指定学号学生的平均成绩，并将平均成 绩返回    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc proc_avergrade</span><br><span class="line">@sno <span class="built_in">varchar</span>(<span class="number">10</span>)</span><br><span class="line">@savg <span class="built_in">int</span> <span class="keyword">out</span> <span class="comment">--输出参数</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">select</span> @savg = <span class="keyword">avg</span>(grade)</span><br><span class="line">	<span class="keyword">from</span> sc</span><br><span class="line">	<span class="keyword">where</span> sno = @sno</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>执行存储过程</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> @<span class="keyword">avg</span> <span class="built_in">int</span></span><br><span class="line"><span class="keyword">set</span> @<span class="keyword">avg</span>=<span class="number">0</span></span><br><span class="line">exec proc_avergrade <span class="string">'200215121'</span>,@<span class="keyword">avg</span> <span class="keyword">out</span></span><br><span class="line"><span class="keyword">select</span> @<span class="keyword">avg</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>删除存储过程</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">drop</span> <span class="keyword">procedure</span> proc_avergrade <span class="comment">--不删除永久存储在数据库中</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>练习1.编写一个存储过程，在sc表统计每个学生的平均分    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc exp1</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">AVG</span>(grade)</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> sno</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">exec exp1</span><br><span class="line"><span class="keyword">drop</span> proc exp1</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>对练习1的存储过程进行改进，添加一个输入参 数——学号，使存储过程能根据输入的学号计算该 学生的平均分    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc exp2</span><br><span class="line">@sno <span class="built_in">char</span>(<span class="number">9</span>)</span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">AVG</span>(grade)</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">where</span> sno=@sno</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">exec exp2 <span class="string">'201215121'</span></span><br><span class="line"><span class="keyword">drop</span> proc exp2</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在练习2的基础上添加一个输出参数——平均分， 计算指定学号的平均分，然后将平均分输出    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc exp3</span><br><span class="line">@sno <span class="built_in">char</span>(<span class="number">9</span>),</span><br><span class="line">@sum1 <span class="built_in">int</span> <span class="keyword">out</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">select</span> @sum1=<span class="keyword">AVG</span>(grade)</span><br><span class="line"><span class="keyword">from</span> sc</span><br><span class="line"><span class="keyword">where</span> sno=@sno</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> @<span class="keyword">avg</span> <span class="built_in">int</span></span><br><span class="line">exec exp3 <span class="string">'201215121'</span>,@<span class="keyword">avg</span> <span class="keyword">out</span></span><br><span class="line"><span class="keyword">select</span> @<span class="keyword">avg</span></span><br><span class="line"><span class="keyword">drop</span> proc exp3</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>请编写一个存储过程proc_sum，输入参数为学院，输 出参数为人数，功能为根据输入的学院，统计该学 院的学生人数，并返回学生人数。学生表的结构（sno,sname,sex,department）各个字段含义为学号、 姓名、性别、学院    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> proc proc_sum</span><br><span class="line">@department <span class="built_in">char</span>(<span class="number">9</span>),</span><br><span class="line">@p_num <span class="built_in">int</span> <span class="keyword">out</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">select</span> @p_num=<span class="keyword">count</span>(*)</span><br><span class="line"><span class="keyword">from</span> student</span><br><span class="line"><span class="keyword">where</span> department=@department</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h4 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h4><ul>
+<li>标量函数返回一个标量（单值）结果</li>
+<li>内嵌表值函数返回一个table数据类型</li>
+<li>多语句表值函数返回的数据必须存放于临时表中（性能不好）</li>
+</ul>
+<blockquote>
+<p>请写一个函数whichgeneration，根据输入的参数生 日 (birthday datetime)来判断学生是“80后”还是 “90后”，如果是“80后”返回字符串“80s”， 如果是“90后”返回“90s”，其他返回“too old”    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">FUNCTION</span> whichgeneration(@birthday datetime)</span><br><span class="line"><span class="keyword">RETURNS</span> <span class="built_in">VARCHAR</span>(<span class="number">12</span>)</span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line">	<span class="keyword">declare</span> @temp <span class="built_in">varchar</span>(<span class="number">12</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">year</span>(@birthday)&lt;<span class="number">1980</span> <span class="keyword">set</span> @temp= <span class="string">'too old'</span>;</span><br><span class="line">	else if year(@birthday)&lt;1990 set @temp= '80s';</span><br><span class="line">	else <span class="keyword">set</span> @temp= <span class="string">'90s'</span>;</span><br><span class="line">	return @temp;  <span class="comment">--最后一条语句是返回值</span></span><br><span class="line"><span class="keyword">END</span></span><br><span class="line"><span class="keyword">select</span> dbo.whichgeneration(<span class="string">'1998-12-06'</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>定义一个函数返回学生的学号和姓名</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> Fun()</span><br><span class="line"><span class="keyword">returns</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">return</span></span><br><span class="line">	<span class="keyword">select</span> sno,sname</span><br><span class="line">	<span class="keyword">from</span> student</span><br><span class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> Fun()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>查看计算机系学生的成绩    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> see(@sdept <span class="built_in">varchar</span>(<span class="number">20</span>))</span><br><span class="line"><span class="keyword">returns</span> <span class="keyword">table</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">return</span></span><br><span class="line">(</span><br><span class="line">	<span class="keyword">select</span> student.sno,cno,grade</span><br><span class="line">	<span class="keyword">from</span> student,sc</span><br><span class="line">	<span class="keyword">where</span> student.sno=sc.sno <span class="keyword">and</span> sdept=@sdept</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * </span><br><span class="line"><span class="keyword">from</span> see(<span class="string">'CS'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h3><p>触发器是用户定义在关系表上的一类由事件驱动的特殊过程</p>
+<h4 id="DML触发器"><a href="#DML触发器" class="headerlink" title="DML触发器"></a>DML触发器</h4><p>DML触发器是在对表进行插入、更新或删除操作 时自动执行的存储过程</p>
+<ul>
+<li><p>触发器定义在特定的表上，与表相关 </p>
+</li>
+<li><p>自动触发执行 </p>
+</li>
+<li><p>不能直接调用 </p>
+</li>
+<li><p>是一个事务（可回滚） </p>
+<p>分类 </p>
+</li>
+<li><p>DELETE 触发器 </p>
+</li>
+<li><p>INSERT 触发器  </p>
+</li>
+<li><p>UPDATE 触发器    </p>
+</li>
+</ul>
+<p>Inserted表和Deleted表。这两个表的结构 总是与被该触发器作用的表的结构相同，触发器 执行完成后，与该触发器相关的这两个表也会被 删除    </p>
+<table>
+<thead>
+<tr>
+<th>激活触发器的动作</th>
+<th>Inserted表</th>
+<th>Deleted表</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Insert</td>
+<td>存放要插入的记录</td>
+<td></td>
+</tr>
+<tr>
+<td>Update</td>
+<td>存放要更新的记录</td>
+<td>存放更新前的旧记录</td>
+</tr>
+<tr>
+<td>Delete</td>
+<td></td>
+<td>存放要除的旧记录</td>
+</tr>
+</tbody>
+</table>
+<p> 触发器触发时 </p>
+<ul>
+<li>系统自动在内存中创建deleted表或inserted表 </li>
+<li>只读，不允许修改；触发器执行完成后，自动删除 </li>
+</ul>
+<p>Inserted 表 </p>
+<ul>
+<li>临时保存了插入或更新后的记录行 </li>
+<li>可以从inserted表中检查插入的数据是否满足业务需求 </li>
+<li><p>如果不满足，则向用户报告错误消息，并回滚插入操作    </p>
+<p>Deleted 表 </p>
+</li>
+<li><p>临时保存了删除或更新前的记录行 </p>
+</li>
+<li>可以从deleted表中检查被删除的数据是否满足业务需求 </li>
+<li>如果不满足，则向用户报告错误消息，并回滚插入操作    </li>
+</ul>
+<blockquote>
+<p>建立一个触发器，当向sc表中添加数据时，如果添 加的数据与student表中的数据不匹配（没有对应的学 号），则将此数据删除    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> tr_sc_insert <span class="keyword">on</span> sc</span><br><span class="line"><span class="keyword">for</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">as</span> </span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">declare</span> @bh <span class="built_in">char</span>(<span class="number">10</span>)</span><br><span class="line">	<span class="keyword">select</span> @bh =Inserted.sno <span class="keyword">from</span> Inserted</span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> <span class="keyword">exists</span>(<span class="keyword">select</span> sno <span class="keyword">from</span> student <span class="keyword">where</span> student.sno=@bh)</span><br><span class="line">		<span class="keyword">delete</span> <span class="keyword">from</span> sc <span class="keyword">where</span> sno=@bh</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc</span><br><span class="line"><span class="keyword">values</span>(<span class="string">'1'</span>,<span class="string">'12'</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个触发器，当插入或更新成绩列时， 该触发器检查插入的数据是否处于设定的范围内 （0， 100）    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> tr_sc_grade</span><br><span class="line"><span class="keyword">on</span> sc</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span>,<span class="keyword">update</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">set</span> nocount <span class="keyword">on</span>;</span><br><span class="line">	<span class="keyword">declare</span> @score <span class="built_in">int</span>;</span><br><span class="line">	<span class="keyword">select</span> @score=inserted.grade <span class="keyword">from</span> inserted</span><br><span class="line">	<span class="keyword">if</span>(@score&lt;<span class="number">0</span> <span class="keyword">or</span> @score&gt;<span class="number">100</span>)</span><br><span class="line">	<span class="keyword">begin</span></span><br><span class="line">		raiserror(<span class="string">'成绩必须在0-100之间'</span>,<span class="number">16</span>,<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">rollback</span> <span class="keyword">transaction</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> sc</span><br><span class="line"><span class="keyword">values</span>(<span class="string">'201215121'</span>,<span class="string">'4'</span>,<span class="number">101</span>)</span><br></pre></td></tr></table></figure>
+<p>Raiserror函数    </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">raiserror('错误提示信息'，错误级别0-18，错误状态号1-127)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个修改触发器，该触发器防止用户修改表student 的学号     </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> tr_student_sno <span class="keyword">ON</span> student</span><br><span class="line"><span class="keyword">AFTER</span> <span class="keyword">UPDATE</span></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> NOCOUNT <span class="keyword">ON</span>;</span><br><span class="line">if <span class="keyword">update</span>(sno)</span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">raiserror(<span class="string">'不能修改学号'</span>,<span class="number">16</span>,<span class="number">10</span>)</span><br><span class="line"><span class="keyword">rollback</span> <span class="keyword">transaction</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>建立一个与sc表结构一样的表s1，当删除表sc中的 记录时，自动将删除掉的记录存放到s1表中    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> tr_student_delete</span><br><span class="line"><span class="keyword">ON</span> sc</span><br><span class="line"><span class="keyword">AFTER</span> <span class="keyword">DELETE</span></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> NOCOUNT <span class="keyword">ON</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> s1 <span class="keyword">select</span> * <span class="keyword">from</span> deleted</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当删除表student中的记录时，自动删除表sc中 对应学号的记录    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TRIGGER</span> tr_student_sc_delete</span><br><span class="line"><span class="keyword">ON</span> student</span><br><span class="line"><span class="keyword">AFTER</span> <span class="keyword">DELETE</span></span><br><span class="line"><span class="keyword">AS</span></span><br><span class="line"><span class="keyword">BEGIN</span></span><br><span class="line"><span class="keyword">SET</span> NOCOUNT <span class="keyword">ON</span>;</span><br><span class="line"><span class="keyword">DECLARE</span> @sno <span class="built_in">char</span>(<span class="number">10</span>)</span><br><span class="line"><span class="keyword">Select</span> @sno=deleted.sno <span class="keyword">from</span> deleted</span><br><span class="line"><span class="keyword">Delete</span> <span class="keyword">from</span> sc <span class="keyword">where</span> sno=@sno</span><br><span class="line"><span class="keyword">END</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在student表删除学生记录的同时删除学生的选课 记录    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> tr_student_instead</span><br><span class="line"><span class="keyword">on</span> student</span><br><span class="line">instead <span class="keyword">of</span> <span class="keyword">delete</span></span><br><span class="line"><span class="keyword">as</span> </span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">set</span> nocount <span class="keyword">on</span>;</span><br><span class="line">	<span class="keyword">delete</span> <span class="keyword">from</span> sc</span><br><span class="line">	<span class="keyword">where</span> sno <span class="keyword">in</span>(<span class="keyword">select</span> deleted.sno <span class="keyword">from</span> deleted)</span><br><span class="line">	<span class="keyword">delete</span> <span class="keyword">from</span> student</span><br><span class="line">	<span class="keyword">where</span> sno <span class="keyword">in</span>(<span class="keyword">select</span> deleted.sno <span class="keyword">from</span> deleted)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个触发器TrInsUpd，当向图书表中插入或 更新一条记录的类别代号时，新记录的类别代号 必须在图书类别表中存在，否则提示类别代号不 正确    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">trigger</span> TrInsUpd</span><br><span class="line"><span class="keyword">on</span> tushu</span><br><span class="line"><span class="keyword">before</span> <span class="keyword">insert</span>,<span class="keyword">update</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">declare</span> @dh <span class="built_in">int</span>,</span><br><span class="line">	<span class="keyword">select</span> @dh=inserted.leibiedaihao</span><br><span class="line">	<span class="keyword">from</span> inserted</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">not</span> <span class="keyword">exists</span>(<span class="keyword">select</span> leibiedaihao <span class="keyword">from</span> tushuleibie <span class="keyword">where</span> leibiedaihao=@dh))</span><br><span class="line">	<span class="keyword">begin</span></span><br><span class="line">		raiserror(<span class="string">'类别号不存在'</span>,<span class="number">16</span>,<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">rollback</span> <span class="keyword">transaction</span></span><br><span class="line">	<span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个存储过程PrcSelect，根据用户提供的图 书类别名查看相应类别图书的详细信息    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> Prcselect</span><br><span class="line">@classname <span class="built_in">varchar</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line">	<span class="keyword">select</span> tushu.* </span><br><span class="line">	<span class="keyword">from</span> tushu,tushuleibie</span><br><span class="line">	<span class="keyword">where</span> tushu.leibiedaihao=tushueibie.tushudaihao <span class="keyword">and</span> leibieming=@className</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>创建一个函数FunBookSale，该函数根据给定的书 号返回该图书销售的数量    </p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> FunBookSale(@bookno <span class="built_in">varchar</span>)</span><br><span class="line"><span class="keyword">returns</span> <span class="built_in">int</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">begin</span></span><br><span class="line"><span class="keyword">return</span> </span><br><span class="line">	<span class="keyword">select</span> <span class="keyword">sum</span>(数量)</span><br><span class="line">	<span class="keyword">from</span> 订单</span><br><span class="line">	<span class="keyword">where</span> 书号=@bookno</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DB/" rel="tag"><i class="fa fa-tag"></i> -DB</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/05/DB_10/" rel="next" title="DB_11">
+                <i class="fa fa-chevron-left"></i> DB_11
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Yangzixu</p>
+              <p class="site-description motion-element" itemprop="description">小渣渣de blog</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yangzixu666" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第八章数据库编程"><span class="nav-number">1.</span> <span class="nav-text">第八章数据库编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-T-SQL编程基础"><span class="nav-number">1.1.</span> <span class="nav-text">一:T-SQL编程基础</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二：游标"><span class="nav-number">2.</span> <span class="nav-text">二：游标</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义：游标是一种能从包括多条数据记录的结果集中每次提取一条记录的机制"><span class="nav-number">2.0.1.</span> <span class="nav-text">定义：游标是一种能从包括多条数据记录的结果集中每次提取一条记录的机制</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义函数"><span class="nav-number">2.1.</span> <span class="nav-text">自定义函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#触发器"><span class="nav-number">3.</span> <span class="nav-text">触发器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DML触发器"><span class="nav-number">3.1.</span> <span class="nav-text">DML触发器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Yangzixu</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共32.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

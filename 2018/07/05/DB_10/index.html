@@ -86,22 +86,21 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
 
-<meta name="description" content="第一章绪论">
+<meta name="description" content="第11章 并发控制">
 <meta name="keywords" content="-DB">
 <meta property="og:type" content="article">
-<meta property="og:title" content="DB_1">
-<meta property="og:url" content="http://yoursite.com/2018/06/20/DB_1/index.html">
+<meta property="og:title" content="DB_11">
+<meta property="og:url" content="http://yoursite.com/2018/07/05/DB_10/index.html">
 <meta property="og:site_name" content="Yang_1998&#39;s Blog">
-<meta property="og:description" content="第一章绪论">
+<meta property="og:description" content="第11章 并发控制">
 <meta property="og:locale" content="zh-cn">
-<meta property="og:image" content="https://i.loli.net/2018/06/24/5b2f8d5e2cf7f.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/24/5b2f8d7374fda.png">
-<meta property="og:image" content="https://i.loli.net/2018/06/24/5b2f8d8991584.png">
-<meta property="og:updated_time" content="2018-06-24T12:25:01.278Z">
+<meta property="og:image" content="c:/Users/57815/AppData/Local/Temp/1530622095648.png">
+<meta property="og:image" content="c:/Users/57815/AppData/Local/Temp/1530622936942.png">
+<meta property="og:updated_time" content="2018-07-05T13:51:55.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DB_1">
-<meta name="twitter:description" content="第一章绪论">
-<meta name="twitter:image" content="https://i.loli.net/2018/06/24/5b2f8d5e2cf7f.png">
+<meta name="twitter:title" content="DB_11">
+<meta name="twitter:description" content="第11章 并发控制">
+<meta name="twitter:image" content="c:/Users/57815/AppData/Local/Temp/1530622095648.png">
 
 
 
@@ -131,13 +130,13 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/20/DB_1/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/05/DB_10/"/>
 
 
 
 
 
-  <title>DB_1 | Yang_1998's Blog</title>
+  <title>DB_11 | Yang_1998's Blog</title>
   
 
 
@@ -276,7 +275,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/20/DB_1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/05/DB_10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yangzixu">
@@ -293,7 +292,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
         
         
-          <h1 class="post-title" itemprop="name headline">DB_1</h1>
+          <h1 class="post-title" itemprop="name headline">DB_11</h1>
         
 
         <div class="post-meta">
@@ -305,8 +304,8 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-20T18:05:44+08:00">
-                2018-06-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-05T20:21:44+08:00">
+                2018-07-05
               </time>
             
 
@@ -365,249 +364,182 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
       
 
       
-        <h2 id="第一章绪论"><a href="#第一章绪论" class="headerlink" title="第一章绪论"></a>第一章绪论</h2><a id="more"></a>
-<h3 id="第一节-数据库系统概述"><a href="#第一节-数据库系统概述" class="headerlink" title="第一节 数据库系统概述"></a>第一节 数据库系统概述</h3><p><strong>数据库的地位</strong>：数据库技术是<strong>信息系统</strong>的核心和基础，它的出现极大促进了计算机应用向各行各业的渗透。</p>
-<p><strong>数据（Data）的定义：</strong>数据是<strong>数据库中存储的基本对象，</strong>描述事物的符号记录称为数据</p>
-<p>数据的种类：文字、图像、图形、声音</p>
-<p>数据的特点：数据与其语义是不可分的</p>
-<p><strong>数据的形式不能完全表达其内容</strong></p>
-<p><strong>数据库（Database)的定义</strong>：数据库是长期存储在计算机内、有组织、可共享的大量数据的集合。</p>
-<p><strong>数据库的基本特征</strong>：</p>
+        <h3 id="第11章-并发控制"><a href="#第11章-并发控制" class="headerlink" title="第11章 并发控制"></a>第11章 并发控制</h3><a id="more"></a>
+<p>不同的多事务执行方式</p>
 <ul>
-<li>数据按一定的数据模型组织、描述和储存</li>
-<li>可为各种用户共享</li>
-<li>冗余度较小</li>
-<li>数据独立性较高</li>
-<li>易扩展</li>
-</ul>
-<p><strong>数据库管理系统（DataBase Management System DBMS）</strong>：数据库管理系统和操作系统一样是计算机的基础软件。</p>
-<p>   功能：</p>
-<ul>
-<li>数据的定义功能<ul>
-<li>提供数据定义语言（DDL）</li>
-<li>定义数据库中的数据对象</li>
+<li>同时并发方式<ul>
+<li>多处理机系统中，每个处理机可以运行一个事务，多个处理机可以同时运行多个事务，实现多个事务真正的并行运行。</li>
 </ul>
 </li>
-<li>数据组织、存储和管理</li>
-<li>数据操纵功能<ul>
-<li>提供数据操纵语言（DML）</li>
-<li>实现对数据库的基本操作（查询、插入、删除和修改）</li>
+<li>并发带来的问题<ul>
+<li>会产生多个事务同时存取同一数据的情况</li>
+<li>可能会存取不正确的数据，破坏事务一致性和数据库的一致性</li>
 </ul>
 </li>
-<li>数据库的事务管理和运行管理</li>
-<li>数据库的建立和维护功能</li>
-<li>其他功能</li>
 </ul>
-<p><strong>数据库系统（Database System，DBS）</strong>：数据库系统是由<strong>数据库</strong>、<strong>数据管理系统</strong>、<strong>应用程序</strong>和<strong>数据库管理员(DBA)</strong>组织的<strong>存储、管理、处理和维护</strong>数据的系统</p>
-<p><strong>数据管理</strong>：对数据进行分类、组织、编码、存储、检索和维护，是数据处理的中心问题</p>
-<p><strong>数据管理技术的发展</strong>：</p>
+<p><strong>并发操作带来的数据不一致性</strong></p>
+<ul>
+<li><strong>丢失修改</strong><ul>
+<li>两个事务T 1和T2读入同一数据并修改， T2的提交 结果破坏了T 1提交的结果， 导致T1的修改被丢失    </li>
+</ul>
+</li>
+<li><strong>不可重复读</strong><ul>
+<li>不可重复读是指事务T1读取数据后， 事务T2 执行更新操作， 使T1无法再现前一次读取结果    </li>
+</ul>
+</li>
+<li><strong>读脏数据</strong><ul>
+<li>事务T1修改某一数据， 并将其写回磁盘</li>
+<li>事务T2读取同一数据后， T1由于某种原因被撤销    </li>
+<li>这时T1已修改过的数据恢复原值， T2读到的数据就与 数据库中的数据不一致    </li>
+<li><strong>T2读到的数据就为“脏” 数据， 即不正确的数据</strong>    </li>
+</ul>
+</li>
+</ul>
+<p>数据不一致性：<strong>由于并发操作破坏了事务的隔离性</strong>    </p>
+<p>并发控制就是要用<strong>正确的方式调度并发操作</strong>，使一 个用户事务的执行不受其他事务的干扰，从而避免 造成数据的不一致性 .</p>
+<p>并发控制的主要技术</p>
+<ul>
+<li>有封锁</li>
+<li>时间戳</li>
+<li>乐观控制法</li>
+</ul>
+<p>封锁：封锁就是事务T在对某个数据对象（例如表、记录 等）操作之前，先向系统发出请求，对其加锁    </p>
+<p>加锁后事务T就对该数据对象有了一定的控制，在 事务T释放它的锁之前，其它的事务不能更新此数 据对象    </p>
+<p>基本封锁类型：</p>
+<ul>
+<li><strong>排他锁(X锁) 写锁</strong><ul>
+<li>若事务T对数据对象A加上X锁，则只允许T读取 和修改A，其它任何事务都不能再对A加任何类型 的锁，直到T释放A上的锁    </li>
+</ul>
+</li>
+<li><strong>共享锁(S锁) 读锁</strong><ul>
+<li>若事务T对数据对象A加上S锁，则其它事<strong>务只能再 对A加S锁</strong>，而不能加X锁，直到T释放A上的S锁    </li>
+</ul>
+</li>
+</ul>
+<p><strong>避免活锁</strong>：<strong>采用先来先服务的策略</strong>   </p>
+<ul>
+<li>当多个事务请求封锁同一数据对象时    </li>
+<li>按请求封锁的先后次序对这些事务排队    </li>
+<li>该数据对象上的锁一旦释放， 首先批准申请队列中第 一个事务获得锁    </li>
+</ul>
+<p><strong>产生死锁的原因是两个或多个事务都已封锁了一 些数据对象，然后又都请求对已为其他事务封锁 的数据对象加锁，从而出现死等待</strong>    </p>
+<p>预防死锁的方法：</p>
+<ul>
+<li><strong>一次封锁法</strong></li>
+<li><strong>顺序封锁法</strong></li>
+</ul>
+<p>死锁的诊断</p>
+<ul>
+<li>超时法    </li>
+<li>事务等待图法    </li>
+</ul>
+<p>并发控制子系统周期性地（比如每隔数秒）生成 事务等待图，检测事务。如果发现图中存在回路， 则表示系统中出现了死锁    </p>
+<p>死锁的解除</p>
+<ul>
+<li>选择一个处理死锁代价最小的事务，将其撤消    </li>
+<li>释放此事务持有的所有的锁，使其它事务能继续 运行下去    </li>
+</ul>
+<p>并发调度的可串行性</p>
+<ul>
+<li>DBMS对并发事务不同的调度可能会产生不同的结果</li>
+</ul>
+<p><strong>将所有事务串行起来的调度策略一定是正确的调度策略</strong>    </p>
+<p>可串行化(Serializable)调度    </p>
+<ul>
+<li>多个事务的并发执行是正确的，当且仅当其结果与按 某一次序串行地执行这些事务时的结果相同    </li>
+</ul>
+<p>可串行性</p>
+<ul>
+<li>是并发事务正确调度的准则    </li>
+<li>一个给定的并发调度，当且仅当它是可串行化的，才认为是正确调度    </li>
+</ul>
+<p>冲突操作是指<strong>不同的事务</strong>对<strong>同一个数据</strong>的读写操</p>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>人工管理阶段</th>
-<th>文件系统阶段</th>
-<th>数据库系统阶段</th>
+<th>作和写写操作 Ri (x)与Wj(x)</th>
+<th>/<em> 事务Ti读x， Tj写x</em>/</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>*管理者</td>
-<td>用户，数据不保存</td>
-<td>文件系统，数据可长期保存</td>
-<td></td>
-</tr>
-<tr>
-<td>*面向的对象</td>
-<td>应用程序</td>
-<td>应用程序</td>
-<td>全组织</td>
-</tr>
-<tr>
-<td>*共享程度</td>
-<td>无共享冗余度极大</td>
-<td>共享性差，冗余度大</td>
-<td>高</td>
-</tr>
-<tr>
-<td>*独立性</td>
-<td>不独立，完全依赖程序</td>
-<td>记录内有结构，整体无结构</td>
-<td>高</td>
-</tr>
-<tr>
-<td>*结构化</td>
-<td>无结构</td>
-<td>独立性差，数据的逻辑结构改变必须修改应用程序</td>
-<td>整体结构化</td>
-</tr>
-<tr>
-<td>*控制能力</td>
-<td>应用程序控制</td>
-<td>应用程序控制</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
+<td> Wi(x)与Wj(x)</td>
+<td>/<em> 事务Ti写x， Tj写x</em>/</td>
 </tr>
 </tbody>
 </table>
-<p>数据库系统的特点：</p>
+<p> 可串行化调度的充分条件    </p>
+<p> 一个调度Sc在保证冲突操作的次序不变的情况下，通 过交换两个事务不冲突操作的次序得到另一个调度Sc’ ， 如果Sc’是串行的，称调度Sc为冲突可串行化的调度    </p>
+<p>一个调度是冲突可串行化，一定是可串行化的调度    </p>
+<p>两段锁协议：</p>
 <ul>
-<li>数据结构化<ul>
-<li>整体数据结构化是数据库主要特征之一，也是数据库系统和文件系统的本质区别</li>
-<li>数据的结构用<strong>数据模型</strong>描述，无程序的定义和解释</li>
-<li>数据可以<strong>变长</strong></li>
-<li>数据的最小存取单位是<strong>数据项</strong></li>
-</ul>
-</li>
-<li>数据的共享性高、冗余度低且易扩充</li>
-<li>数据独立性高<ul>
-<li>物理独立性<ul>
-<li>用户的应用程序与存储在磁盘上的数据库中的数据时相互独立的。当数据的物理存储改变了，应用程序不用改变。</li>
-</ul>
-</li>
-<li>逻辑独立性<ul>
-<li>应用程序与数据的逻辑结构是相互独立的，数的逻辑结构变了，用户程序也可以不变。</li>
-</ul>
-</li>
-<li>数据的独立性是由DBMS的<strong>二级映像</strong>功能来保证的。</li>
-</ul>
-</li>
-<li>数据由数据库管理系统统一管理和控制<ul>
-<li>数据的安全性保护</li>
-<li>数据的完整性检查</li>
-<li>并发控制</li>
-<li>数据库恢复     </li>
-</ul>
-</li>
-</ul>
-<p>数据模型：</p>
+<li><p>封锁协议：运用封锁方法时，对数据对象加锁时 需要约定一些规则    </p>
 <ul>
-<li>数据模型是对现实世界的抽象</li>
-<li><strong>数据模型是数据库系统的核心和基础</strong></li>
-</ul>
-<p>数据模型分为两类</p>
-<ul>
-<li>概念模型：也称信息模型，按照用户的观点来对数据和信息建模，用于数据库的设计</li>
-<li>逻辑模型和物理模型<ul>
-<li>逻辑模型：主要包括网状模型、层次模型、关系模型、面向对象模型等。</li>
-<li>物理模型：对数据的最底层的抽象，描述数据在系统内部的表示方式和存取方法。</li>
-</ul>
+<li><p>何时申请封锁    </p>
 </li>
-</ul>
-<p><img src="https://i.loli.net/2018/06/24/5b2f8d5e2cf7f.png" alt="1529416450682"></p>
-<p>数据模型的三个组成要素：</p>
-<ul>
-<li>数据结构<ul>
-<li>描述数据库的组成对象，以及对象之间的关系</li>
-<li>对系统静态特性的描述</li>
-<li>非关系模型<ul>
-<li>层次模型</li>
-<li>网状模型</li>
-</ul>
+<li><p>持锁时间    </p>
 </li>
-<li>关系模型<ul>
-<li>数据结构：关系</li>
-</ul>
-</li>
-<li>面向对象模型<ul>
-<li>数据结构：对象</li>
-</ul>
+<li><p>何时释放封锁等  </p>
 </li>
 </ul>
 </li>
-<li>数据操作<ul>
-<li>对数据库中各种对象(型)的实例(值)允许执行的操作及有 关的操作规则    </li>
-<li>查询。更新（插入，删除，修改）</li>
-<li>数据操作是对系统动态特性的描述。    </li>
 </ul>
+<p>两段锁协议：<strong>指所有事务必须分两个阶段对数据 项加锁和解锁</strong>   </p>
+<ul>
+<li>在对任何数据进行读、写操作之前，事务首先要获得 对该数据的封锁    </li>
+<li>在释放一个封锁之后，事务不再申请和获得任何其他 封锁    </li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">“两段”锁的含义：事务分为两个阶段</span><br><span class="line"> 第一阶段是获得封锁，也称为扩展阶段</span><br><span class="line"> 事务可以申请获得任何数据项上的任何类型的锁，但是不能释</span><br><span class="line">放任何锁</span><br><span class="line"> 第二阶段是释放封锁，也称为收缩阶段</span><br><span class="line"> 事务可以释放任何数据项上的任何类型的锁，但是不能再申请</span><br><span class="line">任何锁</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">一次封锁法要求每个事务必须一次将所有要使用的数</span><br><span class="line">据全部加锁，否则就不能继续执行，因此一次封锁法</span><br><span class="line">遵守两段锁协议</span><br><span class="line"> 但是两段锁协议并不要求事务必须一次将所有要使用</span><br><span class="line">的数据全部加锁，因此遵守两段锁协议的事务可能发</span><br><span class="line">生死锁</span><br></pre></td></tr></table></figure>
+<p><strong>封锁对象的大小称为封锁粒度</strong>    </p>
+<p><strong>封锁的对象：逻辑单元，物理单元</strong>    </p>
+<p>选择封锁粒度的原则：</p>
+<ul>
+<li>需要处理多个关系的大量元组的用户事务：以数据库为封锁单位</li>
+<li>需要处理大量元组的用户事务：以关系为封锁单元    </li>
+<li>只处理少量元组的用户事务：以元组为封锁单位    </li>
+</ul>
+<p><img src="C:\Users\57815\AppData\Local\Temp\1530622095648.png" alt="1530622095648"></p>
+<p>多粒度封锁协议    </p>
+<ul>
+<li><p>允许多粒度树中的每个结点被独立地加锁    </p>
 </li>
-<li>数据的完整性约束条件：数据的完整性约束条件是一组完整性规则。</li>
-</ul>
-<p>关系模型：每个关系的数据结构是一张规范化的二维表</p>
-<p>关系模型的概念：</p>
-<ul>
-<li>关系：一个关系就是一张表</li>
-<li>关系名：表名</li>
-<li>关系模式：表头</li>
-<li>元组：表中的一行是一个元组</li>
-<li>属性：表中一列是一个属性，给每一个属性起一个名称即 属性名    </li>
-<li>码：唯一确定一个元组的属性或者属性组</li>
-<li>域：是一组具有相同数据类型的值的集合</li>
-<li>分量：元组中的一个属性值</li>
-</ul>
-<p>关系模式必须是规范化的，关系的每一个分量都必须是一个不可分的数据项</p>
-<p><strong>不允许表中有表</strong></p>
-<p><img src="https://i.loli.net/2018/06/24/5b2f8d7374fda.png" alt="1529484361751"></p>
-<p>数据操作是集合的操作，操作对象和操作结果都是关系，即元组的集合    (查询，插入，删除，更新)</p>
-<p>关系的完整性约束条件：</p>
-<ul>
-<li>实体完整性</li>
-<li>参照完整性</li>
-<li>用户自定义完整性</li>
-</ul>
-<p>数据库系统结构</p>
-<ul>
-<li>型：对某一类数据的结构和属性的说明</li>
-<li>值：是型的具体赋值</li>
-<li>学生记录型：(学号，姓名，性别，系别，年龄，籍贯)<ul>
-<li>记录值(201315130，李明，男，计算机，19，江苏)</li>
-</ul>
+<li><p>对一个结点加锁意味着这个结点的所有后裔结点 也被加以同样类型的锁    </p>
+</li>
+<li><p>在多粒度封锁中一个数据对象可能以两种方式封 锁： <strong>显式封锁</strong>和<strong>隐式封锁</strong>   </p>
 </li>
 </ul>
-<p>模式：模式是数据库中全体数据的逻辑结构和特征的描述，它仅仅涉及型的描述，不涉及具体的值。模式的一个具体值称为模式的一个实例。</p>
-<p><strong>一个数据库只有一个模式</strong></p>
-<p><strong>模式是数据库系统模式结构的中间层</strong>    </p>
-<p><strong>模式是相对稳定的</strong>，<strong>而实例是相对变动的</strong>。</p>
-<p>数据库系统的三级模式结构</p>
+<p>显式封锁: 直接加到数据对象上的封锁    </p>
+<p>隐式封锁: 该数据对象没有独立加锁，是由于其上 级结点加锁而使该数据对象加上了锁    </p>
+<p>显式封锁和隐式封锁的效果是一样的    </p>
+<p>系统必须搜索其上级结点数据库、关系R1 </p>
 <ul>
-<li>模式</li>
-<li>外模式</li>
-<li>内模式</li>
+<li>还要搜索R1的下级结点，即R1中的每一个元组 </li>
+<li>如果其中某一个数据对象已经加了不相容锁，则T必须等待    </li>
 </ul>
-<p><img src="https://i.loli.net/2018/06/24/5b2f8d8991584.png" alt="1529485835773"></p>
-<p>模式的定义</p>
+<p>对某个数据对象加锁，系统要检查    </p>
 <ul>
-<li>数据的逻辑结构(数据项的名字、类型、取值范围)</li>
-<li>数据之间的联系</li>
-<li>数据有关的安全性、完整性要求</li>
-</ul>
-<p>外模式</p>
-<ul>
-<li>数据库用户使用的<strong>局部数据</strong>的逻辑结构和特征的描述</li>
-<li>外模式通常是模式的子集。</li>
-<li>同一外模式可以为某一用户的多个应用系统使用。但是一个应用程序只能使用一个外模式。</li>
-</ul>
-<p>内模式</p>
-<ul>
-<li>内模式也称存储模式，<strong>一个数据库只有一个内模式。</strong></li>
-<li>他是数据物理结构和存储方式的描述，是数据在数据库内部的组织方式。</li>
-</ul>
-<p>二级映像</p>
-<ul>
-<li>外模式/模式 映像<ul>
-<li>对于每一个外模式，数据库系统中都一个外模式/模式映像，它定义了该外模式与模式之间的对应关系。</li>
-<li>当模式改变时，由于数据库管理员对各个外模式/模式的映像作出改变，可以使外模式保持不变</li>
-<li>应用程序是依赖数据的外模式编写的，应用程序不必改变。</li>
-<li>保证的<strong>数据的逻辑独立性</strong></li>
+<li>该数据对象    <ul>
+<li>有无显式封锁与之冲突    </li>
 </ul>
 </li>
-<li>模式/内模式映像<ul>
-<li>当数据库的存储结构改变时，由数据库管理员对模式/内模式映像作相应改变，<br>可以使模式保持不变，从而应用程序也不必改变，</li>
-<li>保证了数据与程序的<strong>物理独立性</strong></li>
-<li>模式/内模式映像是唯一的</li>
+<li>所有上级结点    <ul>
+<li>检查本事务的显式封锁是否与该数据对象上的隐式封锁冲突 (由上级结点已加的封锁造成的 )</li>
+</ul>
+</li>
+<li>所有下级结点    <ul>
+<li>看上面的显式封锁是否与本事务的隐式封锁（将加到下级结点 的封锁）冲突    </li>
 </ul>
 </li>
 </ul>
-<p>数据库系统的组成</p>
+<p>引进意向锁（intention lock）目的 </p>
 <ul>
-<li>硬件平台及数据库</li>
-<li>软件</li>
-<li>人员</li>
+<li>提高对某个数据对象加锁时系统的检查效率    </li>
 </ul>
+<p>如果对一个结点加意向锁，则说明该结点的下层结 点正在被加锁   </p>
+<p> 对任一结点加基本锁，必须先对它的上层结点加意 向锁    </p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">IS锁(意向共享锁)</span><br><span class="line"> 如果对一个数据对象加IS锁， 表示它的后裔结点拟（意</span><br><span class="line">向） 加S锁</span><br><span class="line"> 例如：事务T1要对R1中某个元组加S锁， 则要首先对关</span><br><span class="line">系R1和数据库加IS锁</span><br><span class="line"></span><br><span class="line">IX锁(意向排它锁)</span><br><span class="line"> 如果对一个数据对象加IX锁，表示它的后裔结点拟</span><br><span class="line">（意向）加X锁</span><br><span class="line"> 例如：事务T1要对R1中某个元组加X锁，则要首先对</span><br><span class="line">关 系R1和数据库加IX锁</span><br><span class="line"></span><br><span class="line">SIX锁(共享意向排它锁)</span><br><span class="line"> 如果对一个数据对象加SIX锁，表示对它加S锁，再加</span><br><span class="line">IX锁，即SIX = S + IX</span><br><span class="line"> 例：对某个表加SIX锁，则表示该事务要读整个表（所</span><br><span class="line">以要对该表加S锁），同时会更新个别元组（所以要对</span><br><span class="line">该表加IX锁）</span><br></pre></td></tr></table></figure>
+<p><img src="C:\Users\57815\AppData\Local\Temp\1530622936942.png" alt="1530622936942"></p>
 
       
     </div>
@@ -638,8 +570,8 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/15/作业调度算法/" rel="next" title="os两个作业调度算法">
-                <i class="fa fa-chevron-left"></i> os两个作业调度算法
+              <a href="/2018/07/05/DB_4/" rel="next" title="DB_4">
+                <i class="fa fa-chevron-left"></i> DB_4
               </a>
             
           </div>
@@ -648,8 +580,8 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/24/DB_2/" rel="prev" title="DB_2">
-                DB_2 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/05/DB_8/" rel="prev" title="DB_8">
+                DB_8 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -799,7 +731,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一章绪论"><span class="nav-number">1.</span> <span class="nav-text">第一章绪论</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一节-数据库系统概述"><span class="nav-number">1.1.</span> <span class="nav-text">第一节 数据库系统概述</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第11章-并发控制"><span class="nav-number">1.</span> <span class="nav-text">第11章 并发控制</span></a></li></ol></div>
             
 
           </div>
