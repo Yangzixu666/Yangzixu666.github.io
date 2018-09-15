@@ -80,7 +80,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-机器学习," />
 
 
 
@@ -93,16 +93,18 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
 
-<meta name="description" content="小渣渣de blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Yang_1998&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/09/index.html">
+<meta name="description" content="K-means算法">
+<meta name="keywords" content="-机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K-means算法">
+<meta property="og:url" content="http://yoursite.com/2018/09/15/K-means/index.html">
 <meta property="og:site_name" content="Yang_1998&#39;s Blog">
-<meta property="og:description" content="小渣渣de blog">
+<meta property="og:description" content="K-means算法">
 <meta property="og:locale" content="zh-cn">
+<meta property="og:updated_time" content="2018-09-15T11:47:59.363Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yang_1998&#39;s Blog">
-<meta name="twitter:description" content="小渣渣de blog">
+<meta name="twitter:title" content="K-means算法">
+<meta name="twitter:description" content="K-means算法">
 
 
 
@@ -132,13 +134,13 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/09/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/15/K-means/"/>
 
 
 
 
 
-  <title>Archive | Yang_1998's Blog</title>
+  <title>K-means算法 | Yang_1998's Blog</title>
   
 
 
@@ -156,7 +158,7 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband">
     	<a href="https://github.com/yangzixu666" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     </div>
@@ -296,148 +298,220 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/15/K-means/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yangzixu">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Head.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yang_1998's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">K-means算法</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-15T19:42:16+08:00">
+                2018-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 20 posts in total. Keep on posting.
-      </span>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">-"Machine_Learning"</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2018/09/15/K-means/" class="leancloud_visitors" data-flag-title="K-means算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"><span>℃</span></span>
+                 
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/15/K-means/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">K-means算法</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  834
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-15T19:42:16+08:00"
-              content="2018-09-15" >
-          09-15
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/08/ACM-ICPC 2018 沈阳赛区网络预赛I题/" itemprop="url">
-              
-                <span itemprop="name">ACM-ICPC 2018 沈阳赛区网络预赛I题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-08T21:40:44+08:00"
-              content="2018-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/09/08/ACM-ICPC 2018 徐州赛区网络预赛F题/" itemprop="url">
-              
-                <span itemprop="name">ACM-ICPC 2018 徐州赛区网络预赛F题</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-09-08T21:40:44+08:00"
-              content="2018-09-08" >
-          09-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h2 id="K-means算法"><a href="#K-means算法" class="headerlink" title="K-means算法"></a>K-means算法</h2><a id="more"></a>
+<blockquote>
+<p><strong>步骤</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">- 初始化常数K，随机选取初始K个点为质心</span><br><span class="line">- 重复计算一下过程，直到质心不再改变</span><br><span class="line">  - 计算样本与每个质心之间的相似度，将样本归类到最相似的类中</span><br><span class="line">  - 重新计算质心</span><br><span class="line">- 输出最终的质心以及每个类</span><br><span class="line"></span><br><span class="line">聚类中心的初始化：</span><br><span class="line">代表点的选择：</span><br><span class="line">- 经验选择</span><br><span class="line">- “密度法”选择代表点</span><br><span class="line">- 用（k-1)聚类划分求k个代表点</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> <strong>下面是python代码实现</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random <span class="keyword">as</span> rm</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getdata</span><span class="params">()</span>:</span></span><br><span class="line">    outp=open(<span class="string">'date.txt'</span>,<span class="string">'w'</span>)   <span class="comment">#随缘的数据生成器，可能不能正确的分为4类，可以多试几次，也可以自己手动造数据</span></span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">5</span>):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">10</span>):</span><br><span class="line">            a=rm.uniform(<span class="number">5</span>*j,<span class="number">10</span>*j)</span><br><span class="line">            b=<span class="string">"\t"</span></span><br><span class="line">            c=rm.uniform(<span class="number">3</span>*j,<span class="number">3</span>*j+<span class="number">2</span>)</span><br><span class="line">            d=str(a)+b+str(c)+<span class="string">"\n"</span></span><br><span class="line">            outp.write(d)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">loaddata</span><span class="params">(file_name)</span>:</span></span><br><span class="line">    data_mat=[]</span><br><span class="line">    <span class="keyword">with</span> open(file_name) <span class="keyword">as</span> fr:</span><br><span class="line">        lines = fr.readlines()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> lines:</span><br><span class="line">        tmp=i.strip().split(<span class="string">"\t"</span>)</span><br><span class="line">        flt=list(map(<span class="keyword">lambda</span> x:float(x),tmp))</span><br><span class="line">        data_mat.append(flt)</span><br><span class="line">    <span class="keyword">return</span> np.array(data_mat)</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dist</span><span class="params">(vec1,vec2)</span>:</span></span><br><span class="line">    Sum=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> vec1-vec2:</span><br><span class="line">        i=i**<span class="number">2</span></span><br><span class="line">        Sum+=i</span><br><span class="line">    <span class="keyword">return</span> Sum**<span class="number">0.5</span></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rand_cent</span><span class="params">(L,k)</span>:</span></span><br><span class="line">    n=L.shape[<span class="number">1</span>]<span class="comment">#数据维度 列数  这个题就是有2列</span></span><br><span class="line">    L2=np.zeros((k,n))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        Min=float(min(L[:,i]))</span><br><span class="line">        Rg=float(max(L[:,i]))-Min <span class="comment">#最大值到最小值的范围</span></span><br><span class="line">        L2[:,i]=(Min+Rg*np.random.rand(k,<span class="number">1</span>))[:,<span class="number">0</span>] <span class="comment">#rand（k，1） 生成k*1维的数组，数值在【0,1】之间</span></span><br><span class="line">    <span class="keyword">return</span> L2</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Kmeans</span><span class="params">(L,k)</span>:</span></span><br><span class="line">    m=L.shape[<span class="number">0</span>] <span class="comment">#行,也就是数据点的数量</span></span><br><span class="line">    clus=np.zeros((m,<span class="number">2</span>))<span class="comment">#创建m*2的矩阵，两列分别存储每个点所属的簇和该点距离所属质心的距离</span></span><br><span class="line">    cent=rand_cent(L,k)</span><br><span class="line">    <span class="comment">#print(Cent)</span></span><br><span class="line">    clu_change=<span class="keyword">True</span></span><br><span class="line">    <span class="keyword">while</span> clu_change:</span><br><span class="line">        clu_change=<span class="keyword">False</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            min_dist=np.inf</span><br><span class="line">            min_index=<span class="number">-1</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(k): <span class="comment">#遍历到k个质心的距离</span></span><br><span class="line">                dist_ji=dist(cent[j,:],L[i,:])</span><br><span class="line">                <span class="keyword">if</span> dist_ji&lt;min_dist:</span><br><span class="line">                    min_dist=dist_ji</span><br><span class="line">                    min_index=j<span class="comment">#更新点属于哪个簇</span></span><br><span class="line">            <span class="keyword">if</span>(clus[i][<span class="number">0</span>])!=min_index:</span><br><span class="line">                clu_change=<span class="keyword">True</span></span><br><span class="line">            clus[i,:]=min_index,min_dist**<span class="number">2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(k):</span><br><span class="line">            </span><br><span class="line">            pts=L[np.nonzero(list(map(<span class="keyword">lambda</span> x:x==i,clus[:,<span class="number">0</span>])))] </span><br><span class="line">            <span class="comment">#找出是第i个质心的的点</span></span><br><span class="line">            <span class="comment">#  list(map(lambda x:x==i,clus[:,0]))找出x==i即这个点属于第i个簇。 是一个bool类型的数组</span></span><br><span class="line">            <span class="comment">#  np.nonzero(list(map(lambda x:x==i,clus[:,0]))) 返回是true的元素的下标，即是第i个簇的下标</span></span><br><span class="line">            <span class="comment">#  pts接收是第i个簇的元素</span></span><br><span class="line">            cent[i,:]=np.mean(pts,axis=<span class="number">0</span>)<span class="comment">#计算质心坐标，axis=0表示按pts_inclust的列方向计算均值</span></span><br><span class="line">        <span class="keyword">return</span> cent,clus </span><br><span class="line"></span><br><span class="line">getdata()</span><br><span class="line">L=loaddata(<span class="string">'date.txt'</span>)</span><br><span class="line"><span class="comment">#print(L)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#--------------作图部分-------------------#</span></span><br><span class="line">Cent,mClus=Kmeans(L,<span class="number">4</span>)</span><br><span class="line"><span class="comment">#print(mClus)</span></span><br><span class="line">print(Cent)</span><br><span class="line">point_x=L[:,<span class="number">0</span>] <span class="comment">#第一列即所有x的坐标</span></span><br><span class="line">point_y=L[:,<span class="number">1</span>] <span class="comment">#第二列即所有y的坐标</span></span><br><span class="line">cent_x=Cent[:,<span class="number">0</span>] <span class="comment">#第一列即所有x的坐标</span></span><br><span class="line">cent_y=Cent[:,<span class="number">1</span>] <span class="comment">#第二列即所有y的坐标</span></span><br><span class="line">fig, ax =plt.subplots(figsize=(<span class="number">10</span>,<span class="number">5</span>)) <span class="comment">#画图</span></span><br><span class="line">ax.scatter(point_x, point_y, s=<span class="number">30</span>, c=<span class="string">"r"</span>, marker=<span class="string">"o"</span>, label=<span class="string">"sample point"</span>)</span><br><span class="line">ax.scatter(cent_x, cent_y, s=<span class="number">100</span>, c=<span class="string">"black"</span>, marker=<span class="string">"v"</span>, label=<span class="string">"centroids"</span>)</span><br><span class="line">ax.legend()</span><br><span class="line">ax.set_xlabel(<span class="string">"x"</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">"y"</span>)</span><br><span class="line">plt.show()<span class="comment">#显示图</span></span><br></pre></td></tr></table></figure>
 
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> -机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/08/ACM-ICPC 2018 沈阳赛区网络预赛I题/" rel="next" title="ACM-ICPC 2018 沈阳赛区网络预赛I题">
+                <i class="fa fa-chevron-left"></i> ACM-ICPC 2018 沈阳赛区网络预赛I题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -445,6 +519,10 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
           
+
+  
+
+
 
         </div>
         
@@ -465,8 +543,17 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -583,6 +670,22 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#K-means算法"><span class="nav-number">1.</span> <span class="nav-text">K-means算法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -754,6 +857,10 @@ color="0,0,255" opacity='0.7' zIndex="-2" count="99" src="//cdn.bootcss.com/canv
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
